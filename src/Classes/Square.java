@@ -1,3 +1,4 @@
+package Classes;
 
 public class Square {
 
@@ -7,7 +8,7 @@ public class Square {
         name = str;
     }
 
-    String toString(){
+    public String toString(){
         return "";
     }
 }

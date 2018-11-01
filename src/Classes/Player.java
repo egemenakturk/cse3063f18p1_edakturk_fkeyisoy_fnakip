@@ -1,3 +1,6 @@
+package Classes;
+
+import Classes.Piece;
 
 public class Player {
     String name;
@@ -25,7 +28,6 @@ public class Player {
     }
 
     void setTurn(int x){
-        turn = x;
-
+        this.turn = x;
     }
 }
