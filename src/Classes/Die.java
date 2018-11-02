@@ -10,7 +10,6 @@ public class Die {
     public Die(){
     }
 
-
     public int rollDie (){
         random = new Random();
         setFaceValue(random.nextInt(6)+1);
