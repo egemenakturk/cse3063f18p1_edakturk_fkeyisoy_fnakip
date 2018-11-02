@@ -2,7 +2,7 @@ package Classes;
 
 public class Square {
 
-    String name;
+    private String name;
 
     Square(String str){
         name = str;
@@ -10,5 +10,13 @@ public class Square {
 
     public String toString(){
         return "";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

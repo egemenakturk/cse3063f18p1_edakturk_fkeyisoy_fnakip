@@ -2,25 +2,20 @@ package Classes;
 
 
 public class Piece {
-    int shape;
-    Square square;
-    int currentIndex;
+    private int shape;
+    private int currentIndex;
 
-    Piece(int shp, Square sqr){
-        shape = shp;
-        square = sqr;
+    public Piece(){
+    }
+
+    public Piece(int shape) {
+        this.shape = shape;
     }
 
     int getShape(){
         return shape;
     }
 
-    void moveTo(int x){
 
-    }
-
-    Square getSquare(){
-        return square;
-    }
 }
 

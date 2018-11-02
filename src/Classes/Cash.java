@@ -4,6 +4,9 @@ public class Cash {
 
     private int cash;
 
+    public Cash(int cash) {
+        this.cash = cash;
+    }
 
     public Cash(){
 
@@ -12,7 +15,7 @@ public class Cash {
     public void setAmount (int newAmount){
         this.cash=newAmount;
     }
-     public int getAmount(){
+    public int getAmount(){
         return cash;
     }
 
