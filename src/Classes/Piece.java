@@ -3,10 +3,6 @@ package Classes;
 
 public class Piece {
     private int shape;
-    private int currentIndex;
-
-    public Piece(){
-    }
 
     public Piece(int shape) {
         this.shape = shape;
@@ -16,6 +12,8 @@ public class Piece {
         return shape;
     }
 
-
+    public void setShape(int shape) {
+        this.shape = shape;
+    }
 }
 

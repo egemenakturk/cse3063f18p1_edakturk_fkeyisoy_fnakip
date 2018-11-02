@@ -34,22 +34,19 @@ public class Player {
         this.piece = piece;
     }
 
-    Piece getPiece(){
-
-        return piece;
-    }
-
-    String getName(){
-
+    public String getName() {
         return name;
     }
 
-    int getTurn(){
-
+    public int getTurn() {
         return turn;
     }
 
-    void setTurn(int x){
-        this.turn = x;
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public void setTurn(int turn) {
+        this.turn = turn;
     }
 }
