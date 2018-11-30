@@ -2,34 +2,34 @@ package Classes;
 
 public class Cash {
 
-    private int cash;
-
-    public Cash(int cash) {
-        this.cash = cash;
-    }
+    private long amount;
 
     public Cash(){
-
     }
 
-    public void setAmount (int newAmount){
-        this.cash=newAmount;
-    }
-    public int getAmount(){
-        return cash;
+    public Cash(long amount) {
+        this.amount = amount;
     }
 
-    public void addCash(int cash){
-        this.cash+=cash;
+    public long getAmount() {
+        return amount;
     }
-    public void dropCash(int cash){
-        this.cash-=cash;
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    public void addCash(long amount){
+        this.amount+=amount;
+    }
+    public void dropCash(long amount){
+        this.amount-=amount;
     }
 
     @Override
     public String toString() {
         return "Cash{" +
-                "cash=" + cash +
+                "cash=" + amount +
                 '}';
     }
 }

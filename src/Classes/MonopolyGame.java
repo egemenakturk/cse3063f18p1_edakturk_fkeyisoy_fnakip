@@ -6,18 +6,20 @@ import java.util.Scanner;
 
 public class MonopolyGame {
     private final int NUMBER_OF_PIECES=8;
-    private final int NUMBER_OF_PLAYERS=getNumberOfPlayers();
+    private int NUMBER_OF_PLAYERS;
     private Die die;
     private Board board;
-    private final ArrayList<Player> players = getPlayers();
+    private ArrayList<Player> players;
 
     public MonopolyGame() {
-        board = new Board();
-        die= new Die();
     }
     public void start(){
+        NUMBER_OF_PLAYERS = getNumberOfPlayers();
+        players = getPlayers();
+        board = new Board();
+        die= new Die();
         for (Player player : players){
-            player.setSquare(0);
+            player.setSquareIndex(0);
         }
         int iterations=0;
         Scanner sc = new Scanner(System.in);
@@ -27,13 +29,15 @@ public class MonopolyGame {
 
         for(int i=1;i<=iterations;i++){
 
-            System.out.println("***********ITERATION "+i+"**************");
+            System.out.println("\n***********ITERATION "+i+"**************");
             for(Player player: players){
                 int dieX= die.rollDie();
                 int dieY= die.rollDie();
-                System.out.print("Player: "+ player.getName() + " | Piece: "+ player.getPiece().getShape()+" | Location: "+ board.getSquare(player.getSquare()).getName()+ " | Rolled dies: "+ dieX+ " and "+ dieY+ " | Die Sum: " +(dieX+dieY) );
+                System.out.print("Player: "+ player.getName() + " | Piece: "+ player.getPiece().getShape()+
+                        "\nLocation: "+ board.getSquare(player.getSquareIndex()).getName()+" | Money: "+player.getCash().getAmount() +
+                        "\nRolled dies: "+ dieX+ " and "+ dieY+ " | Die Sum: " +(dieX+dieY) );
                 move(dieX+dieY,player);
-                System.out.println(" | Moved location: " + board.getSquare(player.getSquare()).getName());
+                System.out.println(" | Moved location: " + board.getSquare(player.getSquareIndex()).getName());
             }
         }
 
@@ -63,6 +67,8 @@ public class MonopolyGame {
                 piece=random.nextInt(NUMBER_OF_PIECES);
             }
             player.setPiece(new Piece(piece));
+            player.setCash(new Cash(200));
+            player.setBankrupt(false);
 
 
             System.out.println("Player entered (" + playerName + ") piece: "+ player.getPiece().getShape());
@@ -94,7 +100,7 @@ public class MonopolyGame {
         return true;
     }
     public void move(int x, Player player){
-        player.setSquare(player.getSquare()+x);
+        player.setSquareIndex(player.getSquareIndex()+x);
 
     }
 

@@ -1,29 +1,43 @@
 package Classes;
 
-import Classes.Piece;
-
 public class Player {
     private String name;
-    private int turn;
     private Piece piece;
-    private int square;
+    private int squareIndex;
+    private Cash cash;
+    private boolean isBankrupt;
+
 
     public Player() {
     }
 
-    public Player(String name, int turn, Piece piece, int square) {
+    public Player(String name, Piece piece, int squareIndex, Cash cash, boolean isBankrupt) {
         this.name = name;
-        this.turn = turn;
         this.piece = piece;
-        this.square = square;
+        this.squareIndex = squareIndex;
+        this.cash = cash;
+        this.isBankrupt = isBankrupt;
     }
 
-    public int getSquare() {
-        return square;
+    public int rollDice(Die die){
+        return die.rollDie() + die.rollDie();
     }
 
-    public void setSquare(int square) {
-        this.square = square;
+    public boolean isOutOfMoney(){
+        if(cash.getAmount()<=0){
+            return true;
+        }
+        return false;
+    }
+
+
+
+    public int getSquareIndex() {
+        return squareIndex;
+    }
+
+    public void setSquareIndex(int squareIndex) {
+        this.squareIndex = squareIndex;
     }
 
     public void setName(String name) {
@@ -38,15 +52,24 @@ public class Player {
         return name;
     }
 
-    public int getTurn() {
-        return turn;
-    }
 
     public Piece getPiece() {
         return piece;
     }
 
-    public void setTurn(int turn) {
-        this.turn = turn;
+    public Cash getCash() {
+        return cash;
+    }
+
+    public void setCash(Cash cash) {
+        this.cash = cash;
+    }
+
+    public boolean isBankrupt() {
+        return isBankrupt;
+    }
+
+    public void setBankrupt(boolean bankrupt) {
+        isBankrupt = bankrupt;
     }
 }

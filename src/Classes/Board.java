@@ -1,8 +1,8 @@
 package Classes;
 
 public class Board {
-    public final int SIZE = 40;
-    public final Square[] squares = getSquares();
+    private final int SIZE = 40;
+    private final Square[] squares = getSquares();
 
     public Board() {
     }

@@ -8,7 +8,7 @@ public class Piece {
         this.shape = shape;
     }
 
-    int getShape(){
+    public int getShape(){
         return shape;
     }
 
