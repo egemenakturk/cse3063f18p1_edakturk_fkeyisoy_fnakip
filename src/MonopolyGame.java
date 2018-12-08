@@ -4,6 +4,7 @@ import java.util.*;
 
 public class MonopolyGame {
     private final int NUMBER_OF_PIECES=8;
+    private final String[] pieces={"Car","Baloon", "Wheel", "Shoe", "Apple", "Plane", "Train", "Hat"};
     private int NUMBER_OF_PLAYERS;
     private Die die;
     private Board board;
@@ -100,14 +101,14 @@ public class MonopolyGame {
             if(!pieceCheck(playerNames,piece)){
                 piece=random.nextInt(NUMBER_OF_PIECES);
             }
-            player.setPiece(new Piece(piece));
+            player.setPiece(new Piece(piece,pieces[piece]));
             player.setCash(new Cash(1500));
             player.setBankrupt(false);
             player.setBoard(board);
             player.setInJail(false);
 
 
-            System.out.println("Player entered (" + playerName + ") piece: "+ player.getPiece().getShape());
+            System.out.println("Player entered (" + playerName + ") piece: "+ player.getPiece().getName());
             playerNames.add(player);
         }
         return playerNames;
