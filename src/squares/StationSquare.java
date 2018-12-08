@@ -9,7 +9,7 @@ public class StationSquare extends PropertySquare {
 
     @Override
     public void action(Player player) {
-        if(!this.isHasOwner() && !player.equals(this.getOwner())){
+        if(!this.isHasOwner()){
             if((player.getCash().getAmount()-this.getPrice()) < 0){
                 System.out.println(player.getName() + " cannot afford to buy this place.");
                 return;
@@ -21,8 +21,9 @@ public class StationSquare extends PropertySquare {
             this.setHasOwner(true);
             this.setOwner(player);
             this.setRent((player.getStations().size()+1)*50);
+            System.out.println(player.getName()+"s new balance is " + player.getCash().getAmount() + " cash..");
         }
-        else {
+        else if(!player.equals(this.getOwner())){
             System.out.println(this.getName()+ " has an owner. " + player.getName()+" is paying " + this.getRent()+ " to its owner " + this.getOwner().getName());
             while((player.getCash().getAmount()-this.getRent()) < 0 && player.getProperties().size()>0){
                 System.out.println(player.getName() + " cannot afford to pay this rent..");
@@ -42,6 +43,9 @@ public class StationSquare extends PropertySquare {
             player.getCash().dropCash(this.getRent());
             this.getOwner().getCash().addCash(this.getRent());
             System.out.println(player.getName()+"s new balance is " + player.getCash().getAmount() + " cash..");
+        }
+        else {
+            System.out.println(player.getName()+ " is the owner..");
         }
 
     }

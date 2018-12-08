@@ -1,3 +1,5 @@
+import squares.LotSquare;
+import squares.StationSquare;
 import tools.*;
 
 import java.util.*;
@@ -62,22 +64,26 @@ public class MonopolyGame {
                         board.getSquare(player.getSquareIndex()).action(player);
                     }
                     if(!player.isInJail()){
-                        System.out.print("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName() + " | Piece: "+ player.getPiece().getShape()+
+                        System.out.print("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName() + " | Piece: "+ player.getPiece().getName()+
                                 "\nLocation: "+ board.getSquare(player.getSquareIndex()).getName()+" | Money: "+player.getCash().getAmount() +
                                 "\nRolled dice: "+ dieX+ " and "+ dieY+ " | Dice Sum: " +(dieX+dieY) +"\n");
                         move(dieX+dieY,player);
-                        System.out.println(" | Moved location: " + board.getSquare(player.getSquareIndex()).getName());
+                        System.out.println("Moved location: " + board.getSquare(player.getSquareIndex()).getName());
                         board.getSquare(player.getSquareIndex()).action(player);
                     }
                 }
             }
         }
+        System.out.println();
         for(Player player: players){
-            System.out.print(player.getName() + " properties: ");
-            player.getProperties().forEach(propertySquare -> {
-                System.out.print(propertySquare.getName() + ", ");
-            });
-            System.out.println();
+            if(player.getProperties().size()>0){
+                System.out.println(player.getName()+ " is won the game..");
+                System.out.print(player.getName() + "s' properties: ");
+                player.getProperties().forEach(propertySquare -> {
+                    System.out.print(propertySquare.getName() + ": "+ propertySquare.getPrice()+ " -- ");
+                });
+                System.out.println();
+            }
         }
 
 
@@ -100,9 +106,8 @@ public class MonopolyGame {
                     break;
                 }
                 System.out.print("This name is already taken.\n ");
-
             }
-            if(!pieceCheck(playerNames,piece)){
+            while(!pieceCheck(playerNames,piece)){
                 piece=random.nextInt(NUMBER_OF_PIECES);
             }
             player.setPiece(new Piece(piece,pieces[piece]));
