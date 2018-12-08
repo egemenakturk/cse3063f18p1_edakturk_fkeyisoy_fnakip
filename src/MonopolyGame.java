@@ -52,7 +52,7 @@ public class MonopolyGame {
         endOfTheGame();
 
     }
-    private void endOfTheGame(){
+    public void endOfTheGame(){
         System.out.println();
         for(Player player: players){
             if(player.getProperties().size()>0){
@@ -65,7 +65,7 @@ public class MonopolyGame {
             }
         }
     }
-    private void initialRollDice(){
+    public void initialRollDice(){
         boolean sorted=false;
         Map<Player,Integer> playerMap = new HashMap<>();
 
@@ -94,7 +94,7 @@ public class MonopolyGame {
         }
     }
 
-    private ArrayList<Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         Random random= new Random();
         ArrayList<Player> playerNames = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -128,7 +128,7 @@ public class MonopolyGame {
         return playerNames;
 
     }
-    private int getNumberOfPlayers() {
+    public int getNumberOfPlayers() {
         Scanner scanner = new Scanner(System.in);
         int number_of_player=0;
 
@@ -139,12 +139,12 @@ public class MonopolyGame {
         }
         return number_of_player;
     }
-    private boolean dublicateControl(ArrayList<Player> players, String name){
+    public boolean dublicateControl(ArrayList<Player> players, String name){
         for(Player player : players)
             if(name.equals(player.getName())) return false;
         return true;
     }
-    private boolean pieceCheck(ArrayList<Player> players, int piece){
+    public boolean pieceCheck(ArrayList<Player> players, int piece){
         for (Player player: players)
             if(piece==player.getPiece().getShape())
                 return false;
