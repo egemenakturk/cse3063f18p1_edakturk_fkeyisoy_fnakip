@@ -15,11 +15,60 @@ public class MonopolyGame {
     public MonopolyGame() {
     }
     public void start(){
-        boolean sorted=false;
+
         NUMBER_OF_PLAYERS = getNumberOfPlayers();
         board = new Board();
         players = getPlayers();
         die= new Die();
+
+        initialRollDice();
+
+        int i=0;
+        int bankruptCounter=0;
+        while(bankruptCounter!=NUMBER_OF_PLAYERS-1){
+            bankruptCounter=0;
+            System.out.println("\n***********ITERATION "+(++i)+"**************");
+            for(Player player: players){
+                if(player.isBankrupt()){
+                    bankruptCounter++;
+                    System.out.println("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName()+ " went bankrupt");
+                }
+                else{
+                    int dieX= die.rollDie();
+                    int dieY= die.rollDie();
+                    if(player.isInJail()){
+                        board.getSquare(player.getSquareIndex()).action(player);
+                    }
+                    if(!player.isInJail()){
+                        System.out.print("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName() + " | Piece: "+ player.getPiece().getName()+
+                                "\nLocation: "+ board.getSquare(player.getSquareIndex()).getName()+" | Money: "+player.getCash().getAmount() +
+                                "\nRolled dice: "+ dieX+ " and "+ dieY+ " | Dice Sum: " +(dieX+dieY) +"\n");
+                        move(dieX+dieY,player);
+                        System.out.println("Moved location: " + board.getSquare(player.getSquareIndex()).getName());
+                        board.getSquare(player.getSquareIndex()).action(player);
+                    }
+                }
+            }
+        }
+
+        endOfTheGame();
+
+    }
+    private void endOfTheGame(){
+        System.out.println();
+        for(Player player: players){
+            if(player.getProperties().size()>0){
+                System.out.println(player.getName()+ " is won the game..");
+                System.out.print(player.getName() + "s' properties: ");
+                player.getProperties().forEach(propertySquare -> {
+                    System.out.print(propertySquare.getName() + ": "+ propertySquare.getPrice()+ " -- ");
+                });
+                System.out.println();
+            }
+        }
+    }
+    private void initialRollDice(){
+        boolean sorted=false;
         Map<Player,Integer> playerMap = new HashMap<>();
 
         for (Player player : players){
@@ -45,48 +94,6 @@ public class MonopolyGame {
         for (Player player: players){
             System.out.println("Player"+(players.indexOf(player)+1)+": "+player.getName());
         }
-        int iterations=0;
-
-        int i=0;
-        int bankruptCounter=0;
-        while(bankruptCounter!=NUMBER_OF_PLAYERS-1){
-            bankruptCounter=0;
-            System.out.println("\n***********ITERATION "+(i++)+"**************");
-            for(Player player: players){
-                if(player.isBankrupt()){
-                    bankruptCounter++;
-                    System.out.println("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName()+ " went bankrupt");
-                }
-                else{
-                    int dieX= die.rollDie();
-                    int dieY= die.rollDie();
-                    if(player.isInJail()){
-                        board.getSquare(player.getSquareIndex()).action(player);
-                    }
-                    if(!player.isInJail()){
-                        System.out.print("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName() + " | Piece: "+ player.getPiece().getName()+
-                                "\nLocation: "+ board.getSquare(player.getSquareIndex()).getName()+" | Money: "+player.getCash().getAmount() +
-                                "\nRolled dice: "+ dieX+ " and "+ dieY+ " | Dice Sum: " +(dieX+dieY) +"\n");
-                        move(dieX+dieY,player);
-                        System.out.println("Moved location: " + board.getSquare(player.getSquareIndex()).getName());
-                        board.getSquare(player.getSquareIndex()).action(player);
-                    }
-                }
-            }
-        }
-        System.out.println();
-        for(Player player: players){
-            if(player.getProperties().size()>0){
-                System.out.println(player.getName()+ " is won the game..");
-                System.out.print(player.getName() + "s' properties: ");
-                player.getProperties().forEach(propertySquare -> {
-                    System.out.print(propertySquare.getName() + ": "+ propertySquare.getPrice()+ " -- ");
-                });
-                System.out.println();
-            }
-        }
-
-
     }
 
     private ArrayList<Player> getPlayers() {
