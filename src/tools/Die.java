@@ -9,7 +9,7 @@ public class Die {
 
     public Die(){
     }
-
+    //return an integer between 1-6
     public int rollDie (){
         random = new Random();
         setFaceValue(random.nextInt(6)+1);

@@ -9,6 +9,7 @@ public class LotSquare extends PropertySquare {
 
     @Override
     public void action(Player player) {
+        //if the square has no owner the square can be bought
         if(!this.isHasOwner()){
             if((player.getCash().getAmount()-this.getPrice()) < 0){
                 System.out.println(player.getName() + " cannot afford "+ this.getPrice()+" cash to buy this place.");
@@ -21,6 +22,7 @@ public class LotSquare extends PropertySquare {
             this.setHasOwner(true);
             System.out.println(player.getName()+"s new balance is " + player.getCash().getAmount() + " cash..");
         }
+        //if the player owner of the square, player can build a house on it
         else if(player.equals(this.getOwner())){
             if((player.getCash().getAmount()-this.getPrice()) < 0){
                 System.out.println(player.getName() + " cannot afford "+ this.getPrice()+" cash to build a house.");
@@ -32,8 +34,11 @@ public class LotSquare extends PropertySquare {
             this.setRent(this.getRent()*2);
             System.out.println(player.getName()+"s new balance is " + player.getCash().getAmount() + " cash..");
         }
+        //if the square has another owner, player pays rent to its owner
         else if (!player.equals(this.getOwner())){
             System.out.println(this.getName()+ " has an owner. " + player.getName()+" is paying " + this.getRent()+ " to its owner " + this.getOwner().getName()+"..");
+
+            //sell properties until player gets enough money
             while((player.getCash().getAmount()-this.getRent()) < 0 && player.getProperties().size()>0){
                 System.out.println(player.getName() + " cannot afford to pay this rent");
                 if(player.getProperties().size()>0){
@@ -48,6 +53,7 @@ public class LotSquare extends PropertySquare {
                     System.out.println(square.getName()+ " is sold to "+ (square.getPrice()/2) +"..");
                 }
             }
+            //if no property left and players money is ran out, player went bankrupt
             if((player.getCash().getAmount()-this.getRent())<0){
                 System.out.println(player.getName()+ " is bankrupt. Player is getting out of the game..");
                 player.setBankrupt(true);

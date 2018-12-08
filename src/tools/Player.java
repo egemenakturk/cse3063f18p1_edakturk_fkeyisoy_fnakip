@@ -68,14 +68,6 @@ public class Player {
         this.board = board;
     }
 
-    public boolean isOutOfMoney(){
-        if(cash.getAmount()<=0){
-            return true;
-        }
-        return false;
-    }
-
-
 
     public int getSquareIndex() {
         return squareIndex;
@@ -96,7 +88,6 @@ public class Player {
     public String getName() {
         return name;
     }
-
 
     public Piece getPiece() {
         return piece;

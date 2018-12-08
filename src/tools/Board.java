@@ -6,6 +6,7 @@ public class Board {
     private final int SIZE = 40;
     private final String[] stations = {"Gebze","Pendik","Sirkeci","Haydarpaşa"};
     private final String[] publicCorporations = {"Electric Company","Water Works"};
+    //Lot names
     private final String[] lots={"Kasımpaşa","Dolapdere","Karaköy", "Sultanahmet","Ümraniye","Beşiktaş","Taksim",
             "Beyoğlu","Harbiye","Şişli","Mecidiyeköy","Erenköy","Bostancı","Caddebostan","Nişantaşı","Maçka","Teşvikiye",
             "Etiler","Levent","Bebek","Tarabya","Yeniköy"};
@@ -22,6 +23,7 @@ public class Board {
         int publicCorpCounter=0;
         int lotCounter=0;
         Square[] squares = new Square[SIZE];
+        //defining squares
         for (int i = 0; i < SIZE; i++) {
             if (i == 0)
                 squares[i] = new StartSquare("Start");

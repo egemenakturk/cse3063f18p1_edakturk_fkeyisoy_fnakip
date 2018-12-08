@@ -45,12 +45,6 @@ public class PlayerTest {
         assertEquals(b2,p.getBoard());
     }
 
-
-    @Test
-    public void isOutOfMoney() {
-        assertEquals(false,p.isInJail());
-    }
-
     @Test
     public void getSquareIndex() {
         assertEquals(0,p.getSquareIndex());

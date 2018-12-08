@@ -18,6 +18,7 @@ public class JailSquare extends Square {
             Random random = new Random();
             int choice= random.nextInt(2);
             switch (choice){
+                //if player roll doubles
                 case 0:
                     System.out.println(player.getName()+" is trying to throw doubles..");
                     Die die= new Die();
@@ -31,6 +32,7 @@ public class JailSquare extends Square {
                     else
                         System.out.println(player.getName() + " is  not getting out of the jail..");
                     break;
+                //or pay 50 cash
                 case 1:
                     System.out.println(player.getName()+" is paying 50 cash to get out of jail..");
                     player.getCash().dropCash(50);

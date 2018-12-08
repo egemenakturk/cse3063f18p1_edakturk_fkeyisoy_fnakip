@@ -4,6 +4,7 @@ import java.util.*;
 
 public class MonopolyGame {
     private final int NUMBER_OF_PIECES=8;
+    //pieces list
     private final String[] pieces={"Car","Baloon", "Wheel", "Shoe", "Apple", "Plane", "Train", "Hat"};
     private int NUMBER_OF_PLAYERS;
     private Die die;
@@ -23,14 +24,17 @@ public class MonopolyGame {
 
         int i=0;
         int bankruptCounter=0;
+        //keep up the game until 1 player left
         while(bankruptCounter!=NUMBER_OF_PLAYERS-1){
             bankruptCounter=0;
             System.out.println("\n***********ITERATION "+(++i)+"**************");
             for(Player player: players){
+                //if player is bankrupt do nothing
                 if(player.isBankrupt()){
                     bankruptCounter++;
                     System.out.println("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName()+ " went bankrupt");
                 }
+                //move player to next location
                 else{
                     int dieX= die.rollDie();
                     int dieY= die.rollDie();
@@ -52,6 +56,7 @@ public class MonopolyGame {
         endOfTheGame();
 
     }
+    //game statistics
     private void endOfTheGame(){
         System.out.println();
         for(Player player: players){
@@ -65,6 +70,7 @@ public class MonopolyGame {
             }
         }
     }
+    //decide who is going to start the game
     private void initialRollDice(){
         boolean sorted=false;
         Map<Player,Integer> playerMap = new HashMap<>();
@@ -93,8 +99,8 @@ public class MonopolyGame {
             System.out.println("Player"+(players.indexOf(player)+1)+": "+player.getName());
         }
     }
-
-    private ArrayList<Player> getPlayers() {
+    //getting player from the user and initialize them
+    public ArrayList<Player> getPlayers() {
         Random random= new Random();
         ArrayList<Player> playerNames = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -128,28 +134,38 @@ public class MonopolyGame {
         return playerNames;
 
     }
-    private int getNumberOfPlayers() {
+    //getting how many player will be in this game
+    public int getNumberOfPlayers() {
         Scanner scanner = new Scanner(System.in);
         int number_of_player=0;
 
         while (number_of_player<2 || number_of_player>8){
             System.out.print("Please enter the number of players(must be between 2-8):");
-            number_of_player=scanner.nextInt();
+            try {
+                number_of_player=scanner.nextInt();
+            }
+            catch (InputMismatchException ex){
+                System.out.println("Please enter a numeric value");
+                scanner.nextLine();
+            }
             System.out.println();
         }
         return number_of_player;
     }
+    //dublicate name control
     private boolean dublicateControl(ArrayList<Player> players, String name){
         for(Player player : players)
             if(name.equals(player.getName())) return false;
         return true;
     }
+    //check the piece is assigned a player
     private boolean pieceCheck(ArrayList<Player> players, int piece){
         for (Player player: players)
             if(piece==player.getPiece().getShape())
                 return false;
         return true;
     }
+    //move player to another location
     public void move(int x, Player player){
         player.setSquareIndex(player.getSquareIndex()+x);
 
