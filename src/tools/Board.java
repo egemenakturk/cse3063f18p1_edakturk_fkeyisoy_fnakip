@@ -6,7 +6,7 @@ public class Board {
     private final int SIZE = 40;
     private final String[] stations = {"Gebze","Pendik","Sirkeci","Haydarpaşa"};
     private final String[] publicCorporations = {"Electric Company","Water Works"};
-    private final String[] lots={"Kasımpaşa","Dolapdere","Karaköy", "Sultanahmet","Sirkeci","Beşiktaş","Taksim",
+    private final String[] lots={"Kasımpaşa","Dolapdere","Karaköy", "Sultanahmet","Ümraniye","Beşiktaş","Taksim",
             "Beyoğlu","Harbiye","Şişli","Mecidiyeköy","Erenköy","Bostancı","Caddebostan","Nişantaşı","Maçka","Teşvikiye",
             "Etiler","Levent","Bebek","Tarabya","Yeniköy"};
     private final long[] prices={60,60,100,100,120,140,140,160,180,180,200,220,220,240,260,260,280,300,300,320,350,400};
@@ -35,8 +35,12 @@ public class Board {
                 square.setHasOwner(false);
                 squares[i] = square;
             }
-            else if (i == 12 || i == 28)
-                squares[i] = new PublicCorporationSquare(publicCorporations[publicCorpCounter++]);
+            else if (i == 12 || i == 28){
+                PublicCorporationSquare square = new PublicCorporationSquare(publicCorporations[publicCorpCounter++]);
+                square.setPrice(150);
+                square.setHasOwner(false);
+                squares[i]=square;
+            }
             else if (i == 4)
                 squares[i] = new IncomeTaxSquare("IncomeTaxSquare");
             else if (i == 10)

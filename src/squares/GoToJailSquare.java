@@ -13,6 +13,5 @@ public class GoToJailSquare extends Square {
         player.setSquareIndex(10);
         player.getCash().addCash(200);
         player.setInJail(true);
-
     }
 }

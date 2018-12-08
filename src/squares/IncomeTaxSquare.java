@@ -9,8 +9,7 @@ public class IncomeTaxSquare extends Square {
 
     @Override
     public void action(Player player) {
-        System.out.println(player.getName()+ " is paying 200 cash..");
+        System.out.println(player.getName()+ " is paying 200 cash for tax..");
         player.getCash().dropCash(200);
-
     }
 }
