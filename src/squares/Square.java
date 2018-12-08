@@ -1,15 +1,13 @@
 package squares;
 
-public class Square {
+import tools.Player;
+
+public abstract class Square {
 
     private String name;
 
-    public Square(String str){
-        name = str;
-    }
-
-    public String toString(){
-        return "";
+    public Square(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -19,4 +17,6 @@ public class Square {
     public void setName(String name) {
         this.name = name;
     }
+
+    public abstract void action(Player player);
 }
