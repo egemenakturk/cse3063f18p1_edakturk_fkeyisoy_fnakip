@@ -1,4 +1,4 @@
-package Classes;
+package tools;
 
 public class Player {
     private String name;
@@ -6,17 +6,36 @@ public class Player {
     private int squareIndex;
     private Cash cash;
     private boolean isBankrupt;
-
+    private boolean isInJail;
+    private Board board;
 
     public Player() {
     }
 
-    public Player(String name, Piece piece, int squareIndex, Cash cash, boolean isBankrupt) {
+    public Player(String name, Piece piece, int squareIndex, Cash cash, boolean isBankrupt, boolean isInJail, Board board) {
         this.name = name;
         this.piece = piece;
         this.squareIndex = squareIndex;
         this.cash = cash;
         this.isBankrupt = isBankrupt;
+        this.isInJail = isInJail;
+        this.board = board;
+    }
+
+    public boolean isInJail() {
+        return isInJail;
+    }
+
+    public void setInJail(boolean inJail) {
+        isInJail = inJail;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     public int rollDice(Die die){
