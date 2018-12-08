@@ -1,6 +1,5 @@
 package squares;
 
-import tools.Cash;
 import tools.Player;
 
 public class LotSquare extends PropertySquare {
