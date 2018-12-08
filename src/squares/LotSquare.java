@@ -21,7 +21,7 @@ public class LotSquare extends PropertySquare {
             this.setOwner(player);
             this.setHasOwner(true);
         }
-        else if(this.getOwner().equals(player)){
+        else if(player.equals(this.getOwner())){
             if((player.getCash().getAmount()-this.getPrice()) < 0){
                 System.out.println(player.getName() + " cannot afford to buy this place.");
                 return;
@@ -39,12 +39,18 @@ public class LotSquare extends PropertySquare {
                     PropertySquare square = player.getProperties().get(player.getProperties().size()-1);
                     player.getCash().addCash(square.getPrice()/2);
                     player.getProperties().remove(square);
-                    System.out.println(square.getName()+ " is sold..");
+                    square.setHasOwner(false);
+                    square.setOwner(null);
+                    System.out.println(square.getName()+ " is sold to "+ (square.getPrice()/2) +"..");
                 }
+            }
+            if((player.getCash().getAmount()-this.getRent())<0){
+                System.out.println(player.getName()+ " is bankrupt. Player is getting out of the game..");
+                player.setBankrupt(true);
             }
             player.getCash().dropCash(this.getRent());
             this.getOwner().getCash().addCash(this.getRent());
-            System.out.println("New balance is " + player.getCash().getAmount() + " cash..");
+            System.out.println(player.getName()+"s new balance is " + player.getCash().getAmount() + " cash..");
         }
     }
 }

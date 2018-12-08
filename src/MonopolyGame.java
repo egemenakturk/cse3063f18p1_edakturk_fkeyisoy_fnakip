@@ -44,27 +44,31 @@ public class MonopolyGame {
             System.out.println("Player"+(players.indexOf(player)+1)+": "+player.getName());
         }
         int iterations=0;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of iterations:");
-        iterations= sc.nextInt();
 
-
-        for(int i=1;i<=iterations;i++){
-
-            System.out.println("\n***********ITERATION "+i+"**************");
+        int i=0;
+        int bankruptCounter=0;
+        while(bankruptCounter!=NUMBER_OF_PLAYERS-1){
+            bankruptCounter=0;
+            System.out.println("\n***********ITERATION "+(i++)+"**************");
             for(Player player: players){
-                int dieX= die.rollDie();
-                int dieY= die.rollDie();
-                if(player.isInJail()){
-                    board.getSquare(player.getSquareIndex()).action(player);
+                if(player.isBankrupt()){
+                    bankruptCounter++;
+                    System.out.println("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName()+ " went bankrupt");
                 }
-                if(!player.isInJail()){
-                    System.out.print("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName() + " | Piece: "+ player.getPiece().getShape()+
-                        "\nLocation: "+ board.getSquare(player.getSquareIndex()).getName()+" | Money: "+player.getCash().getAmount() +
-                        "\nRolled dice: "+ dieX+ " and "+ dieY+ " | Dice Sum: " +(dieX+dieY) +"\n");
-                    move(dieX+dieY,player);
-                    System.out.println(" | Moved location: " + board.getSquare(player.getSquareIndex()).getName());
-                    board.getSquare(player.getSquareIndex()).action(player);
+                else{
+                    int dieX= die.rollDie();
+                    int dieY= die.rollDie();
+                    if(player.isInJail()){
+                        board.getSquare(player.getSquareIndex()).action(player);
+                    }
+                    if(!player.isInJail()){
+                        System.out.print("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName() + " | Piece: "+ player.getPiece().getShape()+
+                                "\nLocation: "+ board.getSquare(player.getSquareIndex()).getName()+" | Money: "+player.getCash().getAmount() +
+                                "\nRolled dice: "+ dieX+ " and "+ dieY+ " | Dice Sum: " +(dieX+dieY) +"\n");
+                        move(dieX+dieY,player);
+                        System.out.println(" | Moved location: " + board.getSquare(player.getSquareIndex()).getName());
+                        board.getSquare(player.getSquareIndex()).action(player);
+                    }
                 }
             }
         }
