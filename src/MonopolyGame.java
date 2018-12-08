@@ -72,12 +72,16 @@ public class MonopolyGame {
                 }
             }
         }
+        System.out.println();
         for(Player player: players){
-            System.out.print(player.getName() + " properties: ");
-            player.getProperties().forEach(propertySquare -> {
-                System.out.print(propertySquare.getName() + ", ");
-            });
-            System.out.println();
+            if(player.getProperties().size()>0){
+                System.out.println(player.getName()+ " is won the game..");
+                System.out.print(player.getName() + "s' properties: ");
+                player.getProperties().forEach(propertySquare -> {
+                    System.out.print(propertySquare.getName() + ": "+ propertySquare.getPrice()+ " -- ");
+                });
+                System.out.println();
+            }
         }
 
 

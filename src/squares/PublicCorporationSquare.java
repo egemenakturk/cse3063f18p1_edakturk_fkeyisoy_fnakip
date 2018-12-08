@@ -1,5 +1,6 @@
 package squares;
 
+import tools.Die;
 import tools.Player;
 
 import java.util.Random;
@@ -11,9 +12,9 @@ public class PublicCorporationSquare extends PropertySquare {
 
     @Override
     public void action(Player player) {
-        if(!this.isHasOwner() && !player.equals(this.getOwner())){
+        if(!this.isHasOwner()){
             if((player.getCash().getAmount()-this.getPrice()) < 0){
-                System.out.println(player.getName() + " cannot afford to buy this place.");
+                System.out.println(player.getName() + " cannot afford "+ this.getPrice()+" cash to buy this place.");
                 return;
             }
             System.out.println(player.getName()+ " is paying "+ this.getPrice()+" to buy " + this.getName()+ "..");
@@ -21,18 +22,24 @@ public class PublicCorporationSquare extends PropertySquare {
             player.getProperties().add(this);
             this.setHasOwner(true);
             this.setOwner(player);
+            System.out.println(player.getName()+"s new balance is " + player.getCash().getAmount() + " cash..");
         }
-        else {
-            Random random = new Random();
-            int fv = random.nextInt(11)+2;
-            System.out.println(this.getName()+ " has an owner. " + player.getName()+" is paying " + this.getRent()+ " to its owner " + this.getOwner().getName());
-            this.setRent(fv*10);
+        else if(!player.equals(this.getOwner())) {
+            Die die = new Die();
+            int die1=die.rollDie();
+            int die2=die.rollDie();
+            System.out.println(player.getName() +" is rolling dice: "+ die1 + " and " + die2 );
+            this.setRent((die1+die2)*10);
+            System.out.println(player.getName()+" is paying " +(die1+die2)+"*10 = "+ this.getRent()+ " to its owner " + this.getOwner().getName());
             while((player.getCash().getAmount()-this.getRent()) < 0 && player.getProperties().size()>0){
                 System.out.println(player.getName() + " cannot afford to pay this rent...");
                 if(player.getProperties().size()>0){
                     PropertySquare square = player.getProperties().get(player.getProperties().size()-1);
                     player.getCash().addCash(square.getPrice()/2);
                     System.out.println(square.getName()+ " is sold to "+ (square.getPrice()/2) +" cash..");
+                    if(square instanceof StationSquare){
+                        player.getStations().remove(square);
+                    }
                     player.getProperties().remove(square);
                     square.setOwner(null);
                     square.setHasOwner(false);
@@ -45,6 +52,9 @@ public class PublicCorporationSquare extends PropertySquare {
             player.getCash().dropCash(this.getRent());
             this.getOwner().getCash().addCash(this.getRent());
             System.out.println(player.getName()+"s new balance is " + player.getCash().getAmount() + " cash..");
+        }
+        else {
+            System.out.println(player.getName()+ " is the owner..");
         }
 
     }
