@@ -1,4 +1,4 @@
-package Classes;
+package tools;
 
 public class Cash {
 
@@ -28,7 +28,7 @@ public class Cash {
 
     @Override
     public String toString() {
-        return "Cash{" +
+        return "tools.Cash{" +
                 "cash=" + amount +
                 '}';
     }

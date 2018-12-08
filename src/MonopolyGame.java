@@ -1,8 +1,6 @@
-package Classes;
+import tools.*;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class MonopolyGame {
     private final int NUMBER_OF_PIECES=8;
@@ -14,12 +12,35 @@ public class MonopolyGame {
     public MonopolyGame() {
     }
     public void start(){
+        boolean sorted=false;
         NUMBER_OF_PLAYERS = getNumberOfPlayers();
-        players = getPlayers();
         board = new Board();
+        players = getPlayers();
         die= new Die();
+        Map<Player,Integer> playerMap = new HashMap<>();
+
         for (Player player : players){
             player.setSquareIndex(0);
+            int dieX= die.rollDie();
+            int dieY= die.rollDie();
+            int dieSum = dieX+dieY;
+            playerMap.put(player,dieSum);
+            System.out.println(player.getName()+" is rolling dice: " +dieX+" and "+dieY+ " Dice sum: "+ dieSum);
+        }
+        while(!sorted){
+            sorted=true;
+            int i=0,j=1;
+            while(i<NUMBER_OF_PLAYERS && j<NUMBER_OF_PLAYERS){
+                if(playerMap.get(players.get(i))<playerMap.get(players.get(j))){
+                    Collections.swap(players,i,j);
+                    sorted=false;
+                }
+                i++; j++;
+            }
+        }
+        System.out.println();
+        for (Player player: players){
+            System.out.println("Player"+(players.indexOf(player)+1)+": "+player.getName());
         }
         int iterations=0;
         Scanner sc = new Scanner(System.in);
@@ -33,12 +54,25 @@ public class MonopolyGame {
             for(Player player: players){
                 int dieX= die.rollDie();
                 int dieY= die.rollDie();
-                System.out.print("Player: "+ player.getName() + " | Piece: "+ player.getPiece().getShape()+
+                if(player.isInJail()){
+                    board.getSquare(player.getSquareIndex()).action(player);
+                }
+                if(!player.isInJail()){
+                    System.out.print("\nPlayer"+ (players.indexOf(player)+1)+": "+ player.getName() + " | Piece: "+ player.getPiece().getShape()+
                         "\nLocation: "+ board.getSquare(player.getSquareIndex()).getName()+" | Money: "+player.getCash().getAmount() +
-                        "\nRolled dies: "+ dieX+ " and "+ dieY+ " | Die Sum: " +(dieX+dieY) );
-                move(dieX+dieY,player);
-                System.out.println(" | Moved location: " + board.getSquare(player.getSquareIndex()).getName());
+                        "\nRolled dice: "+ dieX+ " and "+ dieY+ " | Dice Sum: " +(dieX+dieY) +"\n");
+                    move(dieX+dieY,player);
+                    System.out.println(" | Moved location: " + board.getSquare(player.getSquareIndex()).getName());
+                    board.getSquare(player.getSquareIndex()).action(player);
+                }
             }
+        }
+        for(Player player: players){
+            System.out.print(player.getName() + " properties: ");
+            player.getProperties().forEach(propertySquare -> {
+                System.out.print(propertySquare.getName() + ", ");
+            });
+            System.out.println();
         }
 
 
@@ -67,8 +101,10 @@ public class MonopolyGame {
                 piece=random.nextInt(NUMBER_OF_PIECES);
             }
             player.setPiece(new Piece(piece));
-            player.setCash(new Cash(200));
+            player.setCash(new Cash(1500));
             player.setBankrupt(false);
+            player.setBoard(board);
+            player.setInJail(false);
 
 
             System.out.println("Player entered (" + playerName + ") piece: "+ player.getPiece().getShape());
@@ -101,6 +137,12 @@ public class MonopolyGame {
     }
     public void move(int x, Player player){
         player.setSquareIndex(player.getSquareIndex()+x);
+
+        if(player.getSquareIndex()>=40){
+            System.out.println(player.getName() + " is passing the starting point. Gaining 200 cash...");
+            player.getCash().addCash(200);
+            player.setSquareIndex(player.getSquareIndex()%40);
+        }
 
     }
 

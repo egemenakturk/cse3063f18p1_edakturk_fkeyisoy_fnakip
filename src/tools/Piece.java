@@ -1,5 +1,4 @@
-package Classes;
-
+package tools;
 
 public class Piece {
     private int shape;
