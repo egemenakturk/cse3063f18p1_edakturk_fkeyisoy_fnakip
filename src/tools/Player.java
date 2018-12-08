@@ -70,10 +70,6 @@ public class Player {
         this.board = board;
     }
 
-    public int rollDice(Die die){
-        return die.rollDie() + die.rollDie();
-    }
-
     public boolean isOutOfMoney(){
         if(cash.getAmount()<=0){
             return true;
