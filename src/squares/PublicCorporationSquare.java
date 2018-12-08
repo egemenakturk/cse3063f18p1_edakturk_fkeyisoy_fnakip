@@ -3,8 +3,6 @@ package squares;
 import tools.Die;
 import tools.Player;
 
-import java.util.Random;
-
 public class PublicCorporationSquare extends PropertySquare {
     public PublicCorporationSquare(String name) {
         super(name);

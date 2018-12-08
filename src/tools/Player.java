@@ -1,8 +1,6 @@
 package tools;
 
 import squares.PropertySquare;
-import squares.PropertySquare;
-import squares.Square;
 import squares.StationSquare;
 
 import java.util.ArrayList;

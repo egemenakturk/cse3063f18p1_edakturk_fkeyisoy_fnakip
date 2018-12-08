@@ -1,5 +1,3 @@
-import squares.LotSquare;
-import squares.StationSquare;
 import tools.*;
 
 import java.util.*;

@@ -1,7 +1,6 @@
 package tools;
 
 import org.junit.Test;
-import squares.Square;
 
 import static org.junit.Assert.*;
 
