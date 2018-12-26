@@ -1,3 +1,4 @@
+from __future__ import division
 import os
 import nltk
 from nltk.corpus import stopwords
@@ -18,6 +19,8 @@ def get_rid_of_stopword(txt_dir):
             txt_filename = txt_dir + txt
             file = open(txt_filename)
             txt_file = file.read()
+            for char in '-.,"/1234567890(){}[]&%+^!#$':
+                text = txt_file.replace(char, ' ')
             text=txt_file.split()
             for word in text:
                 if not word in stop_words:
@@ -25,7 +28,6 @@ def get_rid_of_stopword(txt_dir):
                         append_file = open("./filtered_txt/"+txt, 'a')
                         append_file.write("  "+word)
                         append_file.close()
-doc_count_diveded_word_counters=15
 
 def count_words(word_freq, d):
     txt_dir = "./filtered_txt/"
@@ -65,8 +67,6 @@ def tf_idf_cal(d,txt_dir, tf_idf_freq):
                         word_counter += 1
         if word_counter > 0 and doc_count != 0:
             doc_count_diveded_word_counter = doc_count / word_counter
-            print(doc_count_diveded_word_counter)
-
             tfidf = d[word] * math.log(doc_count_diveded_word_counter)
             tfidf_dict[word] = tfidf
     tfidf_d_to_list_top_50(tf_idf_freq, tfidf_dict)
