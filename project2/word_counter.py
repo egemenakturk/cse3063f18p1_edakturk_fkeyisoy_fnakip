@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import csv
 import draw_wordcloud
+import math
 
 
 def get_rid_of_stopword(txt_dir):
@@ -15,26 +16,58 @@ def get_rid_of_stopword(txt_dir):
         file_extension = txt.split(".")[-1]
         if file_extension == "txt":
             txt_filename = txt_dir + txt
+            print(txt)
             file = open(txt_filename)
             txt_file = file.read()
             text=txt_file.split()
             for word in text:
                 if not word in stop_words:
-                    append_file = open("./articles/txt_formats/filtered_text.txt",'a')
-                    append_file.write("  "+word)
-                    append_file.close()
+                    if len(word) > 2 :
+                        append_file = open("./filtered_txt/"+txt, 'a')
+                        append_file.write("  "+word)
+                        append_file.close()
 
 
-
-
-def count_words(word_freq,d):
-            file = open("./articles/txt_formats/filtered_text.txt")
+def count_words(word_freq, d):
+    txt_dir = "./filtered_txt/"
+    if txt_dir == "": txt_dir = os.getcwd() + "\\"  # if no txt_dir passed in
+    for txt in os.listdir(txt_dir):
+        file_extension = txt.split(".")[-1]
+        if file_extension == "txt":
+            txt_filename = txt_dir + txt
+            file = open(txt_filename)
             txt_file = file.read()
             word_list = txt_file.split()
             for word in word_list:
                 if len(word) > 2:
                     d[word] = d.get(word, 0)+1
             tf_d_to_list_top_50(word_freq, d)
+
+
+def tf_idf_cal(d,txt_dir):
+    if txt_dir == "": txt_dir = os.getcwd() + "\\"  # if no txt_dir passed in
+    doc_count= len(os.listdir(txt_dir))
+
+    tfidf_dict = {}
+    for word in list(d.keys()):
+        word_counter = 0
+        # Checking how many documents include 'word'
+        txt_dir = "./filtered_txt/"
+        if txt_dir == "": txt_dir = os.getcwd() + "\\"  # if no txt_dir passed in
+        for txt in os.listdir(txt_dir):
+            file_extension = txt.split(".")[-1]
+            if file_extension == "txt":
+                txt_filename = txt_dir + txt
+                file = open(txt_filename)
+                txt_file = file.read()
+                word_list = txt_file.split()
+                for doc in word_list:
+                    if word in doc:
+                        word_counter += 1
+
+                if word_counter != 0:
+                    tfidf = d[word] * math.log(doc_count / word_counter)
+                    tfidf_dict[word] = tfidf
 
 
 def tf_d_to_list_top_50(word_freq, d):
