@@ -1,0 +1,3678 @@
+competition and regulation in a wireless operators
+
+market: an evolutionary game perspective
+
+omer korcak∗  george iosiﬁdis†  tansu alpcan‡  and iordanis koutsopoulos†
+
+∗dept  of computer engineering  marmara university  turkey
+
+† dept  of computer and comm  engineering  university of thessaly and certh  greece
+
+‡dept  of electrical and electronic engineering  university of melbourne  australia
+
+ 
+ 
+ 
+ 
+
+ 
+
+p
+e
+s
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+i
+
+n
+ 
+s
+c
+ 
+ 
+ 
+
+ 
+v
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+:
+v
+i
+x
+r
+a
+
+abstract—we consider a market where a set of wireless
+operators compete for a large common pool of users  the
+latter have a reservation utility of u  units or  equivalently 
+an alternative option to satisfy their communication needs  the
+operators must satisfy these minimum requirements in order to
+attract the users  we model the users decisions and interaction as
+an evolutionary game and the competition among the operators
+as a non cooperative price game which is proved to be a potential
+game  for each set of prices selected by the operators  the
+evolutionary game attains a different stationary point  we show
+that the outcome of both games depends on the reservation
+utility of the users and the amount of spectrum w the operators
+have at their disposal  we express the market welfare and the
+revenue of the operators as functions of these two parameters 
+accordingly  we consider the scenario where a regulating agency
+is able to intervene and change the outcome of the market by
+tuning w and or u   different regulators may have different
+objectives and criteria according to which they intervene  we
+analyze the various possible regulation methods and discuss their
+requirements  implications and impact on the market 
+
+i  introduction
+
+consider a city where   commercial operators  companies 
+and one municipal operator offer wifi internet access to
+the citizens  users   the companies charge for their services
+and offer better rates than the municipal wifi service which
+however is given gratis  users with high needs will select
+one of the companies  however  if they are charged with
+high prices  or served with low rates  a portion of them will
+eventually migrate to the municipal network  in other words 
+the municipal service constitutes an alternative choice for the
+users and therefore sets the minimum requirements which the
+commercial providers should satisfy  apparently  the existence
+of the municipal network affects both the user decisions and
+the operators pricing policy  in different settings  the minimum
+requirement can be an inherent characteristic of the users as
+for example a lower bound on transmission rate for a particular
+application  an upper bound on the price they are willing to pay
+or certain combinations of both of these parameters  again  the
+operators can attract the users only if they offer more appealing
+services and prices 
+
+in this paper  we consider a general wireless communication
+services market where a set of operators  compete to sell
+their services to a common large pool of users  we assume
+that users have minimum requirements or alternative options
+to satisfy their needs which we model by introducing the
+reservation utility u        users select an operator only if the
+
+fig     the market consists of a set of operators competing over a common
+pool of users  each user selects one of the market operators or opts to abstain
+from the market and be associated with the neutral operator  the latter models
+the alternative out of the market users option or their minimum service price
+requirements 
+
+offered service and the charged price ensure utility higher than
+u   we analyze the users strategy for selecting operator and the
+price competition among the operators under this constraint 
+we ﬁnd that the market outcome depends on u  and on the
+amount of spectrum each operator has at his disposal w  
+accordingly  we consider the existence of a regulating agency
+who is interested in affecting the market and enforcing a more
+desirable outcome  by tuning either w or u   for example 
+consider the municipal wifi provider who is actually able
+to set u  and bias the competition among the commercial
+providers  this is of crucial importance since in many cases the
+competition of operators may yield inefﬁcient allocation of the
+network resources      or even reduced revenue for them      
+we introduce a rigorous framework that allows us to analyze
+the various methods through which the regulator can intervene
+and affect the market outcome according to his objective 
+
+our model captures many different settings such as a wifi
+market in a city  a mobile cell phone market in a country
+or even a secondary spectrum market where primary users
+lease their spectrum to secondary users  in order to make our
+study more realistic  we adopt a macroscopic perspective and
+analyze the interaction of the operators and users in a large
+time scale  for large population of users  and under limited
+information  the operators are not aware of the users speciﬁc
+
+systems  in many cases  the competition results in undesirable
+outcome  for example  in     the authors consider an oligopoly
+communication market and show that
+it yields inefﬁcient
+resource allocation for the users  from a different perspective
+it is explained in      that selﬁsh pricing strategies may also
+decrease the revenue of the sellers providers  in these cases 
+the strategy of each node  buyer  affects the performance of
+the other nodes by increasing the delay of the services they
+receive       effective cost  or  equivalently  decreasing the
+resource the provider allocates to them       delivered price  
+this equal resource sharing assumption represents many dif 
+ferent access schemes and protocols  tdma  csma ca  etc  
+    
+
+more recently 
+
+the competition of operators in wireless
+services markets has been studied in                             
+the users can be charged either with a usage based pricing
+scheme        or on a per subscription basis              we
+adopt the latter approach since it is more representative of
+the current wireless communication systems  we assume that
+users may migrate  churn  from one operator to the other 
+      and we use evolutionary game theory  evgt  to model
+this process       this allows us to capture many realistic
+aspects and to analyze the interaction of very large population
+of users under limited information  the motivation for using
+evgt in such systems is very nicely discussed in       due
+to the existence of the neutral operator  the user strategy
+is updated through a hybrid scheme based on imitation and
+direct selection of p   we deﬁne a new revision protocol
+to capture this aspect and we derive the respective system
+dynamic equations 
+
+although the regulation has been discussed in context of
+networks       it remains largely unexplored  some recent work
+          study how a regulator or an intervention device may
+affect a non cooperative game among a set of players  e g 
+operators   however  these works do not consider hierarchical
+systems  with large populations and limited information  our
+contribution can be summarized as follows:  i  we model the
+wireless service market using an evolutionary game where
+the users employ a new hybrid revision protocol  based both
+on imitation and direct selection of a speciﬁc choice  namely
+the p   we derive the differential equations that describe the
+evolution of this system and ﬁnd the stationary points   ii 
+we deﬁne the price competition game for i operators and
+the particular case that users have minimum requirements  or
+equivalently  alternative choices offers   iii  we prove that this
+is a potential game and we analytically ﬁnd the nash equilib 
+ria   iv  we introduce the concept of the neutral operator who
+represents the system state regulator or the minimum users
+requirement  and  v  we discuss different regulation methods
+and analyze their efﬁcacy  implications and the resources that
+are required for their implementation 
+
+the rest of this paper is organized as follows  in section ii
+we introduce the system model and in section iii we analyze
+the dynamics of the users interaction and ﬁnd the stationary
+point of the market  in section iv we deﬁne and solve the
+price competition game among the operators and in section v
+
+fig     the oligopoly market consists of i operators and n users  s   each
+user is associated with one operator at each speciﬁc time slot  every operator
+i =               i can serve more than one users at a certain time slot  the users
+that fail to satisfy their minimum requirements  ui ≤ u   ∀i ∈ i  abstain
+from the market and select the neutral operator p  
+
+needs and the latter cannot predict in advance the exact level
+of service they will receive  each operator has a total resource
+at his disposal  e g  the aggregate service rate  which is on
+average equally allocated to his subscribers            this is
+due to the various network management and load balancing
+techniques that the operators employ  or because of the speciﬁc
+protocol that is used       each user selects the operator that
+will provide the optimal combination of service quality and
+price  apparently  the decision of each user affects the utility
+of the other users  we model this interdependency as an
+evolutionary game      the stationary point of which represents
+the users distribution among the operators and depends on
+the charged prices  this gives rise to a non cooperative price
+competition game among the operators who strive to maximize
+their proﬁts 
+
+central to our analysis is the concept or the neutral operator
+p  which provides to the users a constant and given utility of
+u  units  the p  can be a special kind of operator  like the
+municipal wifi provider in the example above  or it can simply
+model the user choice to abstain from the market  this way 
+we can directly calculate how many users are served by the
+market and how many abstain from it and select p   moreover 
+p  allows us to introduce the role of a regulating agency who
+can intervene and bias the market outcome through the service
+u   we show that p  can be used to increase the revenue of the
+operators or the efﬁciency of the market  in some cases  both of
+these metrics can be simultaneously improved at a cost which
+is incurred by the regulator  alternatively  the outcome of the
+market can be regulated by changing the amount of spectrum
+each operator has at his disposal  different regulating methods
+give different results and entail different cost for the regulator 
+
+a  related work and contribution
+
+the competition of sellers for attracting buyers has been
+studied extensively in the context of network economics      
+     both for the internet and more recently for wireless
+
+we discuss the relation between the revenue of the operators
+and the efﬁciency of the market and their dependency on the
+system parameters  accordingly  we analyze various regulation
+methods for different regulation objectives and give related
+numerical examples  we conclude in section vi 
+
+ii  system model
+
+we consider a wireless service market  hereafter referred to
+as a market  with a very large set of users n =                n  
+and a set of operators i =                i   which is depicted
+in figure    we assume a time slotted operation  each user
+cannot be served by more than one operator simultaneously 
+however  users can switch in each slot t between operators or
+even they can opt to refrain and not purchase services from
+anyone of the i operators  the net utility perceived by each
+user who is served by operator i in time slot t is:
+
+ui wi  ni t   λi  = vi wi  ni t   − λi
+
+   
+
+where ni t  are the users served by this speciﬁc operator in
+slot t  wi the total spectrum at his disposal  and λi the charged
+price  in order to describe the market operation we introduce
+the users vector x t  =  x  t   x  t           xi  t   x  t    where
+the ith component xi t  = ni t  n represents the portion of
+users that have selected operator i ∈ i  additionally  with
+x  t  = n  t  n we denote the portion of users that have
+selected neither of the i operators  we assume that the number
+of users n is very large  n >>   and therefore the variable
+xi t  = ni t  n is considered continuous  in other words 
+we assume that there exist a continuum of users partitioned
+among the different operators 
+
+   valuation function: the function vi ·  represents the
+value of the offered service for each user associated with
+operator i ∈ i  users are considered homogeneous: all the
+users served by a certain operator are charged the same price
+and perceive the same utility  we consider the following
+particular valuation function:
+
+vi wi  xi t   = log
+
+wi
+
+n xi t 
+
+  xi t  >  
+
+   
+
+since n is given  we use xi t  instead of ni t   this function
+has the following desirable properties:  i  the valuation for
+each user decreases with the total number of served users by
+the speciﬁc operator due to congestion   ii  increases with the
+amount of available spectrum wi  and  iii  it is a concave
+function and therefore captures the saturation of the user
+satisfaction as the allocated resource increases  i e  it satisﬁes
+the principle of diminishing marginal returns      
+
+a basic assumption in our model is that users served by
+the same operator are allocated an equal amount of resource 
+we want to stress that this assumption captures many different
+settings in wireline       or wireless networks                 
+            some examples where the equal resource sharing
+assumption holds are the following:
+
+• fdma   tdma: if the operator uses a multiple ac 
+cess scheme like frequency division multiple access
+ fdma  or time division multiple access  tdma  
+
+then the equal resource sharing assumption holds by
+default       the users served by a certain operator receive
+an equal share of his total available spectrum or an equal
+time share of the operator’s channel 
+
+• csma ca: a similar result holds for the carrier sense
+multiple access scheme with collision avoidance       
+that is used in ieee        protocols  users trying to
+access the channel receive an equal share of it and achieve
+  on average   the same transmission rate  additionally 
+as it was shown in       even if the radio transmitters
+are controlled by selﬁsh users  they can achieve this fair
+resource sharing 
+
+• random access of multiple channels: even in more
+complicated access schemes as in the case  for example 
+where many different users iteratively select the least
+congested channel among a set of available channels  it
+is proved that each user receives asymptotically an equal
+share of the channel bandwidth       
+
+additionally  the macroscopic perspective and the large time
+scale that we consider in this problem   ensure that spatiotem 
+poral variations in the quality of the offered services will be
+smoothed out due to load balancing and other similar network
+management techniques that the operators employ  therefore 
+users of each operator are treated in equal terms 
+
+   neutral operator: variable x  t  represents the portion
+of users that do not select anyone of the i operators  namely 
+a user in each time slot t is willing to pay operator i ∈ i
+only if the offered utility ui wi  xi t   λi  is greater than a
+threshold u  ≥    if all operators fail to satisfy this minimum
+requirement then the user abstains from the market and is
+associated with the neutral operator p   figure    in other
+words  p  represents the choice of selecting neither of the
+i operators and receiving utility of u  units  technically  as
+it will be shown in the sequel  the inclusion of p  affects
+both the user decision process for selecting operator and the
+competition among the operators 
+
+from a modeling perspective  the neutral operator may be
+used to represent different realistic aspects of the wireless
+service market  first  p  can be an actual operator owned by
+the state  as the public municipal wifi provider we considered
+in the introductory example  in this case  through the gratis u 
+service  the state intervenes and regulates the market as we
+will explain in section v  additionally  u  can be indirectly
+imposed by the state  the regulator  through certain rules such
+as the minimum amount of spectrum rate per user  finally  it
+can represent the users reluctancy to pay very high prices for
+poor qos  similarly to the individual rationality constraint in
+mechanism design  we take these realistic aspects into account
+and moreover  by using x  t   we ﬁnd precisely how many
+users are not satisﬁed by the market of the i operators 
+
+unlike the valuation vi ·  of the service offered by each
+operator i ∈ i  u  is considered constant  when u  represents
+users minimum requirements or respective restrictions im 
+posed by regulatory rules  this assumption follows directly and
+actually is imperative  in case u  models the service offered
+by the neutral operator  e g  the municipal wifi network  
+
+the constant value of u  means that it is independent of the
+number of users and hence non congestible  we follow this
+assumption for the following two reasons: i  u  is a free of
+charge service which in general is low and hence can be
+ensured for a large number of users   ii  the state agency
+ i e  the regulator  who provides u   is able to increase his
+resource in order to ensure a constant value for u   as we
+will explain in next sections  this latter aspect captures the
+cost of regulation  i e  the cost of serving users through the
+neutral operator  finally  notice that our model can be easily
+extended for the case that u  is a congestible service 
+
+   revenue: each operator i ∈ i determines the price
+λi ∈ r  that he will charge to his clients  the decisions
+of the operators are realized in a different time scale than the
+decisions of the users  namely  each operator i determines his
+price in the beginning of each time epoch t which consists of
+t slots  while users update their operator association decision
+in each slot  let us deﬁne the price vector λ =  λi
+: i =
+              i  and the vector of the i −  prices of operators other
+than i as λ−i =  λj : j ∈ i \ i   we assume that t is large
+enough so that for each price vector λ set at the beginning of
+an epoch  the market of the users reaches a stationary point  
+if such a point is attainable   during this epoch  the objective
+of each operator i ∈ i is to maximize his revenue during each
+epoch t :
+
+ri xi t   λi  = λixi t n
+
+   
+
+in these markets there are no service level agreements  slas 
+or any other type of qos guarantees and hence the operators
+are willing to admit and serve as many users as it is required
+to achieve their goal 
+
+iii  user strategy and market dynamics
+
+a  evolutionary game gu among users
+
+in order to select the optimal operator that maximizes eq 
+     each user must be aware of all system parameters  i e 
+the spectrum wi  the number of served users ni and the
+charged price λi for each i ∈ i  however  in realistic settings
+this information will not be available in advance  given these
+restrictions and the large number of users  we model their
+interaction and the operator selection process by deﬁning an
+evolutionary game  gu   as follows:
+
+• players: the set of the n users  n =                n   
+• strategies: each user selects a certain operator i ∈ i or
+
+the neutral operator p  
+
+• population state:
+
+operators
+
+i
+ x  t   x  t           xi  t   x  t   
+
+and the
+
+the users distribution over
+
+the
+neutral operator  x t  =
+
+• payoff: the user’s net utility ui wi  xi t   λi  when he
+
+selects operator i ∈ i  or u  when he selects p  
+
+to facilitate our analysis we make the following assump 
+
+tions:
+
+• assumption  : the number of users n is very large 
+n >>   and therefore the variable xi t  = ni t  n is
+considered continuous 
+
+• assumption  : the initial distribution of users over the
+i operators is non zero: xi    >    ∀i ∈ i  it directly
+follows that x     <   
+
+in the sequel we explain how each user selects his strategy
+under this limited information and what is the outcome of this
+game 
+
+b  user strategy update
+
+a basic component of every evolutionary game is the revi 
+sion protocol       it captures the dynamics of the interaction
+among the users and describes in detail the process according
+to which a player iteratively updates his strategy  there exist
+many different options for the revision protocol  depending
+on the modeling assumptions of the speciﬁc problem  these
+assumptions are mainly related to how sophisticated  informed
+and rational are the players  on the one extreme  fully rational
+and informed players update their choices according to a best
+response strategy like in the typical  non evolutionary  strate 
+gic games  this means that players make a direct selection
+of the best available strategy  on the other extreme  players
+follow an imitation strategy  in this case a player  a  selects
+randomly another player  b  and if the utility of the latter
+is higher   a  imitates his strategy with a probability that
+is proportional to the anticipated utility improvement  this
+modeling option is suitable for imperfectly informed players 
+or players with bounded rationality who update their strategy
+based on a better  instead of best  response strategy  between
+these two extremes  there are many different options  for
+example  a player may update his strategy with a hybrid
+protocol based partially on imitation and on direct selection 
+    
+
+in this work  we assume that each user updates his strategy
+by a special type of hybrid revision protocol which is a com 
+bination of imitation of other users associated with operators
+from the set i  market operators  and direct selection of the
+neutral operator p   the imitation component captures the lack
+of information users have at their disposal about the market 
+on the other hand  each user is aware of the exact value of
+u  and hence this choice is always available through direct
+selection  notice that the considered revision protocol is not
+a typical hybrid protocol since the direct selection is related
+only to the selection of p  and not to the other operators 
+
+in detail  the proposed revision protocol can be described
+by the following actions that each user may take in each slot
+t:
+
+   a user associated with an operator i ∈ i  selects ran 
+domly another user who is associated with an operator
+j ∈ i  j  = i  and if uj > ui imitates his strategy
+with a probability that is proportional to the difference
+ uj − ui  
+
+   a user associated with the neutral operator p   selects
+randomly another user associated with operator j ∈ i
+and if uj > u   imitates his strategy with a probability
+that is proportional to the difference  uj − u   
+
+   a user associated with operator i ∈ i selects the neutral
+operator p  with probability that is proportional to the
+
+difference  u  − ui  
+
+options   and    stem from the replicator dynamics introduced
+by taylor and jonker in      and are based on imitation of
+users with better strategies  on the other hand  option   is
+based on direct selection of better strategies  known also as
+pairwise dynamics  introduced by smith in      
+
+after deﬁning the revision protocol  we can calculate the
+rate at which users switch from one strategy  operator  to
+another strategy  operator   in particular  the switch rate of
+users migrating from operator i to operator j ∈ i \ i in time
+slot t  is:
+
+ρij  t  = xj t  uj  t  − ui t   
+
+   
+
+where xj t  is the portion of users already associated with
+operator j  for simplicity  we express the user utilities as a
+function with a single argument  the time t  additionally  the
+users switch rate from operator i to neutral operator p   is:
+
+ρi  t  = γ u  − ui t   
+
+   
+
+notice the difference between imitation and direct selection
+     instead of multiplying the utilities difference with the
+population x  t   we use a constant multiplier γ ∈ r  this
+is due to the model assumption that switching to the neutral
+operator is not accomplished through imitation and hence does
+not depend on the portion of users already been associated with
+p   the probabilistic aspect captures the bounded rationality 
+the inertia of the users and other similar realistic aspects of
+these markets  finally  the switch rate of users leaving p  and
+returning to the market  option    is:
+
+ρ i t  = xi t  ui t  − u   
+
+   
+
+variables ρij  ρi  and ρ i represent the rates at which
+users migrate from one operator to another  including the
+neutral operator p   it is interesting to notice that if these
+rates are normalized properly  they can be interpreted as the
+probabilities with which users update their operator selection
+strategy  this approach is discussed in      in the sequel we
+use these rates to derive the ordinary differential equations
+ ode  that describe the evolution of the population of users 
+
+c  market stationary points
+
+the new type of hybrid revision protocol introduced above 
+results in user market dynamics that cannot be expressed with
+the known differential equations of replicator dynamics or
+other similar scheme       in section a of the appendix we
+prove that the mean dynamics of the system are:
+
+dxi t 
+
+dt
+
+= xi t  ui t  − uavg t  − x  t  ui t  − u  
+
+   
+
+− γ u  − ui t      x  t  ui t  − u      ∀i ∈ i
+
+where uavg t  =pi∈i xi t ui t  is the average utility of the
+
+market in each slot t  the user population associated with p 
+is:
+
+dx  t 
+
+dt
+
+= x  xi∈i  
+
+xi u  − ui    γ xj∈i−
+
+xj u  − uj 
+
+   
+
+where i   is the subset of operators offering utility ui t  > u  
+and i − is the subset of operators offering utility ui t  < u  
+at slot t 
+
+the important thing is that despite its different evolution 
+as we prove in section b  this system has the same stationary
+points as the systems that are described by the classical
+replicator dynamic equations:
+
+˙xi t  =   ⇒ xi t  ui t  − uavg t   =    ∀i ∈ i
+
+   
+
+and
+
+˙x  t  =   ⇒ x  t  u  − uavg t   =  
+
+    
+
+the user state vector x∗ and the respective user utility u ∗
+i   i ∈
+i  that satisfy these stationary conditions can be summarized
+in the following   cases:
+
+• case a: x∗
+• case b: x∗
+
+i   x∗
+i   x∗
+
+  >   and u ∗
+j >    x∗
+j > u   ∀ i  j ∈ i 
+j >    x∗
+
+i   x∗
+
+u ∗
+
+i   u ∗
+
+• case c: x∗
+
+∀ i  j ∈ i 
+
+i = u   i ∈ i 
+  =   and u ∗
+
+i = u ∗
+
+j   with
+
+  =   and u ∗
+
+i = u ∗
+
+j = u  
+
+case a corresponds to the scenario where all operators offer
+to their clients net utility which is equal to the value of the
+service offered by the neutral operator  on the other hand 
+in case b the market operators offer higher utility than the
+neutral operator and hence all users are served by the market 
+finally  in case c  the i operators offer marginal services  i e 
+equal to u   but they have attracted all the users 
+
+it
+
+is interesting to compare the above results with the
+wardrop model and the wardrop equilibrium        the market
+stationary points for case a and case c satisfy the wardrop
+ﬁrst principle and yield an equilibrium where the available
+strategy options  ”operators” in our problem  result in equal
+utility for the players  ”users”   however  this does not hold
+for case b where operators other than p  offer higher utility 
+this emerges due to the fact that the alternative option  or
+reservation utility  is non congestible  i e  independent of x  
+the evolutionary game allows us to provide a richer model
+than the typical wardrop model and more importantly to
+capture the users interaction and dynamics 
+
+before calculating the stationary point x∗ for each case 
+and in order to facilitate our analysis  we deﬁne the scalar
+parameter αi = wi  n eu   for each operator i ∈ i and
+the respective vector α =  αi
+: i =               i   as it will
+be explained in the sequel  these parameters determine the
+operators and users interaction and will help us to explain the
+role of the regulator  we can ﬁnd the stationary points for case
+a by using equation ui wi  x∗
+i   λi  = u  and imposing the
+constraint x∗
+  >    apparently  the state vector x∗ depends on
+the price vector λ  therefore  we deﬁne the set of all possible
+case a stationary points  xa  as follows  see section b for
+details :
+
+xa = x∗
+
+i = αie−λi   ∀i ∈ i  x∗
+
+  =   −
+
+αie−λi : λ ∈ Λa 
+
+i
+
+xi= 
+
+wireless service market stationary points 
+
+table i
+
+x∗
+i
+
+xa
+
+αie−λi
+
+x∗
+
+ 
+
+cond 
+
+  − pi
+
+i=  αie−λi
+λ ∈ Λa
+
+xb
+αi
+
+eλi pi
+
+j=  αj e
+
+−λj
+
+ 
+
+λ ∈ Λb
+
+xc
+
+αie−λi
+
+ 
+
+λ ∈ Λc
+
+where Λa is the set of prices for which a stationary point in
+xa is attainable  i e  for which it holds x∗
+
+  >  :
+
+Λa =  λ   λ           λi   :
+
+αie−λi <   
+
+i
+
+xi= 
+
+recall that due to the very large number of users  we consider
+xi a continuous variable 
+
+similarly  for case b  we calculate the stationary points by
+j   λj  
+
+i   λi  = uj wj  x∗
+
+using the set of equations ui wi  x∗
+∀ i  j ∈ i:
+
+xb = x∗
+
+i =
+
+αi
+j=  αje−λj
+
+  ∀i ∈ i  x∗
+
+  =   : λ ∈ Λb 
+
+where Λb is the set of prices for which a stationary point in
+xb is feasible  i e  u ∗
+
+i > u :
+
+eλipi
+
+Λb =  λ   λ           λi   :
+
+αie−λi >   
+
+i
+
+xi= 
+
+finally  the stationary points for the case c solution must
+
+notice that the stationary point sets xa  xb and xc and the
+respective price sets  Λa  Λb  and Λc depend on the vector
+α  these results are summarized in table i  for each oper 
+ators price proﬁle λ  the evolutionary game admits a unique
+stationary point x∗ =  x∗
+   which belongs in
+the respective set xa  xb  or xc  the utility of the users is
+equal to u  for the case a and case c  while for case b it
+depends on λ 
+
+           x∗
+
+i   x∗
+
+   x∗
+
+   stability of stationary points: now that we found the
+stationary points of the hybrid revision protocol  it is important
+to characterize their stability  we prove in the sequel that these
+points are evolutionary stable strategies  ess  and hence they
+are locally asymptotically stable  i e  stable within a limited
+region  ess and replicator dynamics are the two concepts used
+for studying evolutionary games  unlike the replicator dynam 
+ics  ess is a static concept which requires that the strategy
+of players in the equilibrium is stable when it is invaded by a
+small population of players playing a different strategy       
+when the players population is homogeneous  as we assumed
+in our model  an ess is stable in the replicator dynamic  but
+
+i=  αie−λi =   which yields:
+
+satisfy the constraint pi
+
+with
+
+i = αie−λi   ∀ i ∈ i  x∗
+
+xc = cid:  x∗
+Λc =  λ   λ           λi   :
+
+  =   : λ ∈ Λc cid:  
+αie−λi =   
+xi= 
+
+i
+
+not every stable steady state is an ess  additionally  every
+ess is nash  and hence ess is a reﬁnement of the nash
+equilibrium 
+
+let us ﬁrst give a simple deﬁnition of the ess  tailored to
+our system model  assume that the users market has reached
+the stationary state described by vector x∗  suppose now that a
+small portion ǫ >   of the users population deviates from their
+decision in the stationary state  i e  selects another operator 
+and selects another operator j ∈ i or the neutral operator 
+this yields a new distribution of users which we denote by
+    we say that x∗ is an ess if  i  users
+xǫ =  xǫ
+that deviate from x∗ receive lower utility in the new system
+state xǫ or   ii  the utility of the deviating users in xǫ is the
+same as in the previous state x∗  but the utility of the legitimate
+users  those insisting in their initial decisions  is higher in xǫ
+than in x∗  in both cases  the deviating users worsen their
+obtained utility  the stationary points derived above satisfy
+these conditions and hence they are ess 
+
+           xǫ
+
+i   xǫ
+
+   xǫ
+
+   x∗
+
+i   x∗
+
+           x∗
+
+i < x∗
+j > x∗
+
+   ∈ xb  with x∗
+
+i   λi  = uj wj   x∗
+
+the decision of
+i   λi  > uj wj  xǫ
+
+in detail  assume that the system has a stationary point
+  =    suppose that a
+x∗ =  x∗
+user who is associated with operator i ∈ i deviates and selects
+another operator j ∈ i  in this case  the population of users in
+operator i decreases  xǫ
+i and the population of users in
+j   initially  these two operators
+operator j increases  xǫ
+offered identical utility  ui wi  x∗
+j   λj  
+the deviating user
+but after
+it becomes
+j   λj   clearly  the deviating user
+ui wi  xǫ
+obtains less utility and hence there is no incentive to deviate 
+similarly  if a user deviates and selects the neutral operator 
+he will receive reduced utility since when x∗ ∈ xb  it is
+u ∗
+
+i > u   ∀i ∈ i 
+assume now that the system attains a stationary point x∗ ∈
+xa  similarly to the previous analysis  it is straightforward
+that a user who deviates from x∗ and moves from an operator
+i ∈ i to another operator j ∈ i will decrease his utility  if
+the user migrates to the neutral operator  his utility will not be
+reduced because u  is constant  non congestible   however 
+in this case  the users that will insist in their initial choice of
+operator i will now receive higher utility due to the move of the
+deviator  due to the ess deﬁnition and speciﬁcally according
+to smith’s second condition        this is not a preferable
+choice for the deviator and hence x∗ ∈ xb is an ess 
+
+finally  when x∗ ∈ xc  user deviation from a market
+operator i ∈ i to another market operator j ∈ i or to p 
+is not beneﬁcial for the deviator  either because it decreases
+his utility or because it increases the utility of other users 
+in conclusion  the stationary points of the proposed revision
+protocol are ess equilibriums and hence locally stable 
+
+iv  price competition among operators
+
+in the previous section we analyzed the stationary points
+of users interaction and showed that
+they depend on the
+prices selected by the operators  each operator anticipates the
+users strategy and chooses accordingly for each epoch t the
+price that maximizes his revenue  this gives rise to a non 
+cooperative price competition game gp among the operators
+
+b  best response strategy of operators
+
+the best response of each operator i  λ∗
+
+i   to the prices
+selected by the other i −  operators  λ−i  depends on the users
+market stationary point  notice that for certain λ−i  operator
+i may be able to select a price such that  λi  λ−i  belongs to
+any price set  Λa  Λb or Λc  while for some λ−i the operator
+choice will be restricted in two or even a single price set 
+
+best response when λ ∈ Λa: if the i−  operators j ∈ i\i
+select such prices  λ−i  that the market stationary point is
+that maximizes
+x∗ ∈ xa  then operator i ﬁnds the price λ∗
+i
+i  ·  by solving the following constrained opti 
+his revenue ra
+mization problem  pa
+i  :
+
+s t 
+
+αiλin e−λi
+
+max
+λi≥ 
+
+i
+
+αje−λj <  
+
+xj= 
+
+αi
+
+  −pj =i αje−λj
+
+the objective function of this problem is quasi concave 
+      however  the constraint deﬁnes an open set and hence
+uniqueness of optimal solution is not ensured  to overcome
+this obstacle we substitute constraint eq       with the closed
+set:
+
+λi ≥ log
+
+  ǫ
+
+    
+
+where ǫ >   is an arbitrary small constant number  this
+inequality stems from eq       by solving for λi and adding
+ǫ  it does not affect the problem deﬁnition and formulation
+nor the obtained results since  as we will prove in the sequel 
+operators do not select a price in the lower bound of the
+constraint set  after this transformation the problem has a
+unique optimal solution which is equal to the solution of the
+respective unconstrained problem  λ∗
+i =    if     λ−i  ∈ Λa 
+best response when λ ∈ Λb: similarly  when λ−i is such
+i   λ−i  ∈ Λb  then
+i  ·  and is maximized
+
+that operator i can select a price λ∗
+his revenue is given by the function rb
+by the solution of problem  pb
+
+i with  λ∗
+
+    
+
+    
+
+    
+
+    
+
+that is played in the beginning of each time epoch t   we
+assume that operators are aware of the parameters of the users
+market and also know the values of parameters αi  i ∈ i
+and u   speciﬁcally  we model the operators competition as
+a static simultaneous move normal form game of complete
+information  following the bertrand competition model     
+we are interested not only in ﬁnding the nash equilibriums
+ ne  of this game but also to understand if and how the game
+converges to them 
+
+we prove that gp is a potential game and hence if it
+is played in many rounds and operators choose their prices
+based on the previous prices of the other operators  the game
+converges to a ne  in other words  we analyze the dynamics
+induced by the repeated play of the same game assuming
+that operators follow simple myopic rules  we show that
+the equilibrium of the competition game depends on vector
+α and the value of u   for certain combinations of these
+parameters  the game admits a unique equilibrium while for
+other combinations  it reaches one of the inﬁnitely many
+equilibriums depending on the initial prices 
+
+a  price competition game gp
+
+before analyzing this game  it is important to emphasize
+that the revenue function depends on the price vector λ  in
+particular  using equation      we can calculate the revenue of
+operator i when λ ∈ Λa  when λ ∈ Λb  and when λ ∈ Λc 
+denoted as ra
+
+i  ·  respectively:
+
+i  ·  and rc
+
+i  ·   rb
+ra
+
+i  λi  = rc
+
+i  λi  = αiλin e−λi
+
+and
+
+rb
+
+i  λi  λ−i  =
+
+αiλin
+i=  αie−λi
+
+eλipi
+
+i  ·  and rc
+
+i  ·  depend only on the price selected by operator
+ra
+i  while rb
+i  ·  depends on the entire price vector λ  however 
+in all cases  the price set  Λa  Λb or Λc  to which the price
+vector λ =  λi  λ−i  belongs  is determined jointly by all the
+i operators 
+
+let us now deﬁne the non cooperative pricing game
+
+among the i operators  gp =  i   λi    ri  :
+
+    
+
+    
+
+i  :
+λiαin
+
+max
+λi≥ 
+
+i
+
+eλipj∈i αje−λj
+xj= 
+
+αje−λj >  
+
+• the set of players is the set of the i operators i =
+
+s t 
+
+               i  
+
+• the strategy space of each player i is its price λi ∈
+    λmax   λmax ∈ r   and the strategy proﬁle is the
+price vector λ =  λ   λ           λi   of the operators 
+
+• the payoff function of each player is his revenue ri :
+
+ λi  λ−i  → r  where ri = ra
+
+i or rb
+
+i  
+i or rc
+
+the particular characteristic of this game is that each operator
+has   different payoff functions depending on the price proﬁle 
+despite this characteristic  the payoff function is continuous
+and quasi concave as we prove in the appendix  section c 
+in the sequel  we analyze the best response of each operator
+which constitutes a reaction curve to the prices set by the other
+operators  the equilibrium of the game gp is the intersection
+of the reaction curves of the operators 
+
+this is also a concave problem which would have a unique
+solution if the constraint set was closed and compact  again 
+we substitute the constraint with the  almost  equivalent in 
+equality:
+
+λi ≤ log
+
+− ǫ
+
+    
+
+now  the problem has a unique solution which coincides with
+the solution of the respective unconstrained problem  denoted
+i   if  µ∗
+µ∗
+best response when λ ∈ Λc: in this special case  the price
+of each operator i is directly determined by the prices that the
+
+i   λ−i  ∈ Λb as we explain in detail in section d 
+
+αi
+
+  −pj =i αje−λj
+
+other operators have selected  namely  given the vector λ−i 
+each operator i has only one feasible solution  otherwise λ
+does not belong to Λc :
+
+λ∗
+i = log
+
+αi
+
+  −pj =i αje−λj
+
+whether each operator i will agree and adopt this price or not 
+depends on the respective accrued revenue rc
+
+i  λ∗
+
+i   λ−i  
+
+we can summarize the best response price strategy of each
+
+operator i ∈ i  by deﬁning his revenue function as follows:
+
+    
+
+equilibriums of i operators competition for different values
+
+table ii
+
+prices rev 
+
+α ∈ a 
+
+λ∗
+i
+
+r∗
+i
+
+∗
+
+x
+
+ 
+
+αn
+
+e
+
+xa
+
+of α 
+
+α ∈ a 
+
+λi  = λj
+
+or λi = λj = log iα
+
+ri  = rj
+or ri = rj = n
+
+i log iα
+
+xc
+
+α ∈ a 
+
+i
+
+i− 
+
+n
+
+i− 
+
+xb
+
+ri λi  λ−i  α  = 
+
+αiλin
+
+j=  αj eλi −λj
+
+pi
+αiλin e−λi
+
+if λi < l  
+if λi ≥ l  
+
+    
+
+speciﬁcally we use the iterated dominance method  section
+f  
+
+where l  = log αi    −pj =i αje−λj     clearly  the optimal
+
+i depends both on the prices of the other operators λ−i
+
+price λ∗
+and on parameters αi  i =               i:
+
+λ∗
+i = arg max
+λi
+
+ri λi  λ−i  α 
+
+    
+
+where α =  α   α           αi    clearly  each operator needs to
+know the vector α and to be able to observe the other operators
+prices in order to calculate his best response 
+
+for each possible price vector λ−i of the i \ i operators 
+operator i will solve all the above optimization problems and
+ﬁnd the solution that yields the highest revenue  in section
+d we prove that this results in the following best response
+strategy:
+
+λ∗
+
+i  λ−i  α  =
+
+
+ 
+µ∗
+i
+l 
+
+if     λ−i  ∈ Λa 
+if  µ∗
+i   λ−i  ∈ Λb 
+otherwise 
+
+    
+
+these
+
+options
+
+are mutually
+
+exclusive  moreover 
+
+pj =i αj eλj ≥    the only feasible response is λ∗
+
+if
+i  
+i = µ∗
+i on parameters αi = wi  n eu   
+the dependence of λ∗
+i =               i  has interesting implications and brings into
+the fore the role of the regulator  finally  observe that the
+i and pb
+transformation of the constraint set of problems pa
+i
+did not affect the best response strategy of operator i since
+he only selects the solution of the respective unconstrained
+problems 
+
+c  equilibrium analysis of gp
+
+the price competition game gp is a ﬁnite ordinal potential
+game and therefore not only has pure nash equilibria but
+also the players can reach them under any best response
+strategy  that is  if we consider that gp is played repeatedly
+by the operators who update their strategy with a myopic best
+response method  we can show that the convergence to the
+equilibriums is ensured under any ﬁnite improvement path
+ fip         the potential function is:
+
+j=  log λj − λj  
+
+p λ  = pi
+ifpi
+pi
+j=  log λj − λj  − log  pi
+
+j=  αje−λj ≤   
+
+j=  αje−λj    else 
+
+the detailed proof is given in section e  in order to ﬁnd the
+ne we solve the system of equations       i =               i and
+
+the outcome of the game gu affects the strategy of opera 
+tors and therefore the outcome of the game gp  a price vector
+−i  is an equilibrium of the game gp   parameterized by
+ λ∗
+the vector α =  α   α           αi    if it satisﬁes:
+
+i   λ∗
+
+ri λ∗
+
+i   λ∗
+
+−i  α  ≥ ri λi  λ∗
+
+−i  α   ∀ i ∈ i  ∀λi ≥    ∀ x∗
+
+in order to simplify our study and focus on the results and
+implications of our analysis  we assume that all operators have
+the same amount of available spectrum wi = w and therefore
+it is also αi = α  ∀i ∈ i 
+
+the equilibrium of the price competition game and subse 
+quently the market stationary point x∗  depend on the value
+of α  these results are summarized in table ii and stem from
+the following theorem:
+
+theorem iv    the non cooperative game gp where opera 
+tors select their strategy in order to maximize their revenue 
+converges to one of the following pure nash equilibria:
+
+i
+
+• if α ∈ a  =     e i   there is a unique nash equilibrium
+i =   : i =               i  and the
+
+λ∗ ∈ Λa  with λ∗ =  λ∗
+respective unique market stationary point is x∗ ∈ xa 
+
+• if α ∈ a  =  e
+
+i−   i  ∞   there is a unique nash
+equilibrium λ∗ ∈ Λb  with λ∗ =  λ∗
+i−  : i =
+              i   which induces a unique respective market
+stationary point x∗ ∈ xb 
+
+i = i
+
+• if α ∈ a  =  e i  e
+
+i−   i   there exist inﬁnitely many
+equilibria  λ∗ ∈ Λc  and each one of them yields a
+respective market stationary point x∗ ∈ xc 
+
+i
+
+proof: in section e of the appendix we provide the
+detailed proof according to which gp is a potential game and
+in section f we use iterated strict dominance to ﬁnd the nash
+equilibrium λ∗ which depends on parameter α 
+
+in conclusion  gp is a non cooperative game of complete
+information that attains certain pure nash equilibriums  ne 
+which depend on parameters αi  i =               i  it is proved to
+be a potential game and hence the equilibriums can be reached
+if gp is played repeatedly and operators update their strategy
+by simple best response or other similar utility improvement
+methods  if αi parameters are equal  i e  αi = α  ∀i ∈ i  then
+the ne is unique for α ∈ a  or α ∈ a   for the case α ∈ a  
+the reached equilibrium depends on the initial price vector 
+
+v  market outcome and regulation
+
+operator j   is improved:
+
+the outcome of the users and operators interaction can
+be characterized by the following two fundamental criteria:
+the efﬁciency of the users market and the total revenue the
+operators accrue  we show that both of them depend on
+parameter α and we further explore the impact of w and
+u  on them  accordingly  we analyze the problem from a
+mechanism design perspective and explain how a regulator  as
+the municipal wifi provider in the introductory example  can
+bias the market operation  outcome  by adjusting the value of
+α  we consider different regulation methods and discuss their
+implications 
+
+a  market outcome and regulation criteria
+
+   market efﬁciency: a market is efﬁcient if the users
+enjoy high utilities in the stationary point  however  in certain
+scenarios  the services provided by the p  may impose an
+additional cost to the system  e g  the cost of the municipal
+wifi provider is borne by the citizens  and hence it would
+be preferable to have all the users served by the i operators 
+therefore  we use the following two metrics to characterize
+the efﬁciency of the market:  i  the aggregate utility  uagg  of
+users in the stationary point x∗  and  ii  the cost j  = x n u 
+incurred by the neutral operator p  for serving the portion x 
+of the users  both of these metrics depend on parameter α and
+hence on system parameters w and u  
+
+in detail:
+• when α ∈ a  =     e i   it is x∗ ∈ xa  which means
+  > selects p   the latter incurs
+ n u  units  all users receive utility of u 
+
+that a portion of users x∗
+cost of j  = x∗
+units and hence the aggregate utility is uagg = n u  
+
+• on the other hand  when α ∈ a  =  e i  ei  i−   i  
+it is x∗ ∈ xc  in this case  all users are served by the
+i = u  for i =
+i operators with marginal utility  i e  u ∗
+              i  there is no cost for p   i e  j  =    again 
+it is uagg = n u  but unlike the previous case  there is
+no cost for p  
+
+• finally  if α ∈ a  =  ei  i−   i  ∞  it is x∗ ∈ xb  all
+  =   and j  =
+i > u   i =               i 
+
+users are served by the i operators  i e  x∗
+   and receive high utilities u ∗
+the welfare is higher in this case  i e  uagg > n u  
+
+in summary  the aggregate utility of the users changes with α
+as follows:
+
+uagg = n u  
+
+n  log  w i
+
+n   − i
+
+i−    
+
+if α ∈ a  ∪ a  
+if α ∈ a  
+
+    
+
+it can be easily veriﬁed that uagg is a continuous function 
+
+we have expressed uagg in terms of w and u  in order to
+investigate the impact of the system parameters in the market 
+when α ∈ a ∪a   uagg increases with u  and is independent
+of the spectrum w   on the contrary  when α ∈ a   uagg
+increases with w and is independent of u   notice that when
+the value of α changes from a  to interval a   uagg remains
+the same but the other metric of efﬁciency  the cost of neutral
+
+j  =  αin u 
+
+  
+
+e
+
+ 
+
+if α ∈ a  
+if α ∈ a  ∪ a  
+
+    
+
+   revenue of operators: when α lies in the interval a  
+i =    ∀i ∈ i and all the operators
+the optimal prices are λ∗
+i = αn e−  = w e− u      which
+accrue the same revenue r∗
+is proportional to α  increases with the available spectrum w  
+decreases with u  and is independent of the number n of
+users  in figure   we depict the revenue of each operator for
+different values of α  in a duopoly market  notice that the
+revenue increases linearly with α ∈     e    
+
+when α ∈ a   the competition of the operators may attain
+different equilibria  λ∗ ∈ Λc  depending on the initial prices
+and on the sequence the operators update their prices  in figure
+  we present the revenue of two operators  duopoly  at the
+equilibrium  for various initial prices and for α = e ∈ a  
+here we assume that the  st operator is able to set his price
+λ     before the  nd operator  also  in figure   we illustrate
+the dependence of the revenue of the operators on the value
+of α when it lies in a   given that λ     =      for certain
+prices  e g  when λ     = log  α  both operators accrue the
+same revenue at the equilibrium  r∗
+
+  = n log  α
+
+  = r∗
+
+ 
+
+ 
+
+if α ∈ a  =  ei  i−    ∞  all operators set their prices to
+i = i  i −    and get r∗
+i = n  i −    units  as shown
+λ∗
+in table ii  figure   depicts the competition of two operators
+and the convergence to the respective nash equilibria for α =
+e  ∈ a   we assume that both operators have selected prices
+λ     = λ     = log  α ≈      however  this price vector
+does not constitute a ne and hence an operator  e g  the  st 
+can temporarily increase his revenue by decreasing his price
+to λ  =    accordingly  the other operator   nd  will react
+by reducing his price to λ  =      gradually  the competition
+of the operators will converge to the ne where both of them
+  =      −    =   and will have revenue
+will set λ∗
+  = λ∗
+  =    interestingly  the revenue of both operators
+r∗
+  = r∗
+in the equilibrium is lower than their initial revenue when
+they did not compete  finally  notice that  unlike the aggregate
+utility uagg  the revenue of the operators depends only on
+α = w  n eu    and not the speciﬁc values of w and u  
+before we proceed  let us summarize the above results:
+
+• if α ∈ a  =     e i   it is r∗
+
+i = αn e−  = w e− u     
+i =               i  operators receive equal revenue which is
+ i  proportional to w    ii  inversely proportional to u 
+and  iii  independent of the number of users n  
+
+   r∗
+
+• if α ∈ a  =  e i  ei  i−  
+
+i depends on the initial
+prices operators select  in the particular case that a
+single operator i sets ﬁrst his price λi so as to be
+λi    = log iα  then all operators obtain ﬁnally equal
+revenue r∗
+
+i
+
+i = n log iα
+ 
+• if α ∈ a  =   ei  i−  
+
+i
+
+i−    operators
+receive equal revenue which is  i  proportional to n    ii 
+independent of u  and w  
+
+  ∞   it is r∗
+
+i = n
+
+i
+
+revenue of operators  per user  for different values of  α
+
+ 
+
+r =r =α e in a 
+r  in a 
+r  in a 
+r =r =  in a 
+
+   
+
+   
+
+ 
+
+   
+
+   
+
+   
+
+   
+
+ 
+ 
+r
+o
+t
+a
+r
+e
+p
+o
+ 
+d
+n
+a
+ 
+ 
+ 
+r
+o
+t
+a
+r
+e
+p
+o
+
+ 
+f
+o
+ 
+e
+u
+n
+e
+v
+e
+r
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+value of parameter  α
+
+ 
+
+ 
+
+ 
+
+ 
+
+fig    
+different values of parameter α  i e  in different intervals 
+
+the outcome of the operator competition  gp equilibrium  for
+
+all the users receive utility equal to u   the regulator can
+improve the market efﬁciency  i e  increase uagg and decrease
+j   by increasing the value of α  this can be achieved either
+by increasing w or decreasing u   let us assume that the
+regulator selects the ﬁrst method  for example  he can change
+the price of w and allow the operators to acquire more
+spectrum  if w is increased until α = e i  then the market
+stationary point x∗ switches to xb  in this case  all users
+  =    but they still receive only
+are served by the market  x∗
+marginal utility  uagg = n u   if the regulator provides even
+more spectrum w to operators so as α > ei  i−   i  then
+  =   and moreover the users perceive higher utility because
+x∗
+uagg increases proportional to log w   eq        obviously  the
+improvement in market efﬁciency comes at the cost  opportu 
+nity cost  of the additional spectrum the regulator must provide
+to operators 
+
+on the other hand  the regulator may prefer to directly in 
+tervene in the market through p  and tune u   if u  decreases 
+  decreases and users return to the market  to
+the value of x∗
+the i operators   the portion of users x∗
+  becomes zero when
+α = e i  this way  the cost of the regulator j  decreases
+ since p  serves less users  but at the same time the aggregate
+utility  uagg = n u   is also reduced  namely  uagg decreases
+linearly with u  until α = ei  i−   i and remains constant
+for larger values of u   eq        again  the decision of the
+regulator depends on his cost and on the efﬁciency he wants to
+achieve  in conclusion  depending on they system parameters
+ n  w  i  the efﬁciency of the market may be improved either
+by increasing the resources of operators  sell more spectrum 
+or by rendering highly competitive the services provided by
+the neutral operator p  
+
+   regulating for revenue: as illustrated in table ii  the
+revenue of the operators increases proportionally to α for
+α ∈ a   and proportionally to log α for α ∈ a   while
+it remains constant when α ∈ a   notice that the revenue 
+unlike the market efﬁciency  depends on the value of α and
+
+fig     the regulator selects parameter α  the operators compete and select
+the respective optimal prices λ∗
+i   and then  the users are divided among the
+operators 
+
+b  regulation of the wireless service market
+
+since both the market efﬁciency and the operator revenue
+depend on α and system parameters w and u   a regulating
+agency can act as a mechanism designer and steer the outcome
+of the market in a more desirable equilibrium according to
+his objective  this can be achieved by determining directly
+or indirectly  e g  through pricing  the amount of spectrum
+w each operator has at his disposal  or by intervening in
+the market and setting the value u  as the example with the
+municipal wifi internet provider  this process is depicted in
+figure   
+
+   regulating to increase market efﬁciency: first  we
+highlight the impact of parameters w and u  on the efﬁciency
+metrics  this is of crucial importance because tuning w or u 
+has different implications for the regulator and the market  for
+example  as it is explained below  the regulator can achieve
+the same level of market efﬁciency either by selling more
+spectrum to operators  e g  by decreasing the spectrum price 
+or by allocating more spectrum to the neutral operator:
+
+• assume that u  is ﬁxed  as the allocated spectrum w to
+each operator increases  aggregate utility uagg remains
+constant until parameter α increases up to α ≥ ei  i−  
+ 
+when α ∈ a   uagg is log proportional to w   also 
+the cost j  increases with w   as long as α ∈ a   and
+becomes zero for larger values of α 
+
+i
+
+• assume that w is ﬁxed  uagg increases with u  as long
+as α ∈ a  ∪ a   for larger values of α  uagg does not
+depend directly on u   additionally  the cost j  increases
+with u  as long as α ∈ a  while for larger values of α
+it becomes zero 
+
+let us now give a speciﬁc scenario for regulation  assume
+that initially α ∈ a  =     e i   hence  a portion of users
+is not served by anyone of the i operators  x∗
+  >   and
+
+revenue of operators for different initial prices λ
+
+      in interval a   for α=e
+ 
+
+i
+
+ 
+
+t
+n
+o
+p
+m
+u
+i
+r
+b
+
+i
+l
+i
+
+u
+q
+e
+ 
+e
+h
+t
+ 
+t
+a
+ 
+ 
+ 
+ 
+r
+e
+p
+o
+ 
+d
+n
+a
+ 
+ 
+ 
+ 
+r
+e
+p
+o
+
+ 
+f
+o
+ 
+e
+u
+n
+e
+v
+e
+r
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+   
+
+ 
+ 
+
+r  at the equilibrium
+r  at the equilibrium
+
+   
+
+   
+initial price selected by operator    λ
+
+   
+
+   
+
+ 
+
+   
+
+   
+    =   :       : log  α 
+
+   
+
+   
+
+fig     the outcome of the competition of two operators  with α = e ∈ a 
+and n =       operator   is assumed to set his price λ     ﬁrst  r∗
+  and
+r∗
+
+  depend on λ     
+
+not on the speciﬁc combination of w and u   these results
+are presented in figure   for a market with i =   operators
+and n =      users  in the upper plot  it is u  =     and
+the regulator increases the value of α by increasing w   the
+aggregate utility is constant and equal to uagg = n u  =    
+for α < e    −     ≈     while it increases proportionally
+to log w for α >      obviously  increasing the spectrum of
+operators improves both their revenue and the efﬁciency of the
+market 
+
+in the lower plot  the spectrum at the disposal of each
+operator is constant  w =       and the regulator increases
+the value of α by decreasing u   in this case 
+the total
+revenue increases but at the expense of market efﬁciency 
+when α ∈ a  ∪ a  =     e        the aggregate utility uagg
+is reduced as u  decreases but for α > e      it remains
+constant  notice that for very small values of α  uagg is large 
+however  this desirable result comes at a cost for the regulator 
+namely  in this case only a small portion of users are served
+by the market  while the rest of them select p   therefore  the
+incurred cost j  for the regulator is high 
+
+another interesting point in figure   is the following  in
+the upper subplot  for u  =      the total operators revenue
+is rtot =      units and the aggregate utility is uagg =     
+achieved by increasing the spectrum w until w =       
+units  which yields α =      in the lower plot  the same total
+revenue is reached for w =       and decreasing u  until
+u  =       units  in this case  the aggregate utility is uagg =
+     units  if  for example  the regulator is interesting only in
+maximizing the revenue of operators  then he would prefer the
+ﬁrst method since it requires less spectrum and lower value
+for u  
+
+vi  conclusions
+
+in this paper  we studied the operators price competition in a
+wireless services market where users have a certain reservation
+utility u   we modeled the users interaction as an evolutionary
+
+evolution of prices and revenue when   operators compete in interval a 
+ 
+
+ 
+
+ 
+
+ 
+
+λ
+ 
+ 
+ 
+
+λ
+ 
+ 
+s
+e
+c
+i
+r
+
+p
+
+   
+
+ 
+
+   
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+r
+
+   
+
+ 
+
+ 
+ 
+ 
+
+ 
+
+r
+e
+u
+n
+e
+v
+e
+r
+
+   
+
+   
+
+   
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+number of iteration − step   t 
+
+fig     evolution of operator competition for α = e  ∈ a   the game is
+played repeatedly and operators updated myopically their price based on the
+previous strategy of the other operators 
+
+game and the competition of the operators as a non cooperative
+game of complete information  we proved that
+the latter
+is a potential game and hence has pure nash equilibriums 
+the two games are realized in different time scale but they
+are interrelated  additionally  both of them depend on the
+reservation utility u  and the amount of spectrum w each
+operator has at his disposal  accordingly  we considered a
+regulating agency and discussed how he can intervene and
+change the outcome of the market by tuning either u  or w  
+various regulation methods yield different market outcomes
+and induce a different cost for the regulator 
+
+references
+
+    d  acemoglou  and a  ozdaglar  “price competition in communication
+
+networks”  ieee infocom       
+
+total operators revenue and aggregate users utility
+
+ 
+
+operators revenue
+users social welfare
+
+   
+
+ 
+
+   
+
+α  through w 
+
+ 
+
+   
+
+ 
+
+    
+
+    
+
+   
+
+ 
+
+ 
+ 
+
+    
+
+    
+
+    
+
+ 
+
+ 
+
+   
+
+ 
+
+   
+
+α  through u  
+
+ 
+
+   
+
+ 
+
+fig    
+total revenue of operators and aggregate utility of the users for
+different values of parameter α  in the upper plot  the value of α changes
+through w while in the lower plot it changes through the tuning of u  
+
+    l  he  and j  c  walrand  “pricing and revenue sharing strategies for
+
+internet service providers”  ieee jsac       
+
+    w  h  sandholm  “pairwise comparison dynamics and evolutionary
+
+foundations for nash equilibrium”  games  vol     pp             
+
+    t  nguyen  h  zhou  r  berry  m  honig and r  vohra  “the impact
+of additional unlicensed spectrum on wireless services competition” 
+ieee dyspan       
+
+    l  gao  x  wang  and y  xu  “multiradio channel allocation in multihop
+
+wireless networks”  ieee transactions on mobile computing       
+
+    c  courcoubetis  and r  r  weber  “pricing communication networks:
+
+economics  technology and modelling”  willey       
+
+    s  shakkottai  and r  srikant  “economics of network pricing with
+multiple isps”  ieee acm transactions on networking  vol      no    
+     
+
+    k  leung  and j  huang  “regulating wireless access pricing”  ieee
+
+icc       
+
+    d  niyato  and e  hossain  “modeling user churning behavior in
+wireless networks using evolutionary game theory”  ieee wcnc 
+     
+
+     p  d  taylor  and l  jonker  “evolutionarily stable strategies and game
+
+dynamics”  mathematical biosciences  vol      pp                
+
+     j  park  and m  van der schaar  “the theory of intervention games for
+resource sharing in wireless communications”  ieee jsac  vol      pp 
+              
+
+     d  monderer  and l  s  shapley  “potential games”  games and eco 
+
+nomic behavior  vol           
+
+     g  vojislav  j  huang  and b  rimoldi  “competition of wireless
+providers for atomic users: equilibrium and social optimality”  allerton
+conference       
+
+     d  niyato  e  hossain  and z  han  “dynamics of multiple seller
+and multiple buyer spectrum trading in cognitive radio networks:
+a game theoretic modeling approach”  ieee transactions on mobile
+computing  vol     no          
+
+     d  niyato  and e  hossain  “dynamics of network selection inh
+eterogeneous wireless networks: an evolutionary game approach” 
+ieee transactions on vehicular technology       
+
+     g  bianchi  “performance analysis of the ieee        distributed co 
+ordination function”  ieee journal on selected areas in communication 
+vol      no          
+
+     m  cagalj  s  ganeriwal  and i  aad  “on selﬁsh behavior in csma ca
+
+networks”  ieee infocom        
+
+     x  chen  and j  huang  “evolutionarily stable spectrum access in a
+
+many users regime”  ieee globecom       
+
+     o  korcak  g  iosiﬁdis  t  alpcan  and i  koutsopoulos  “competition
+and regulation in wireless services markets”  technical report  arxiv 
+http:  arxiv org abs                 
+
+     j  g  wardrop  “some theoretical aspects of road trafﬁc research” 
+
+proceedings of the institution of civil engineers       
+
+     p  maille  and b  tufﬁn  “price war in heterogeneous wireless networks” 
+
+computer networks  vol      pp                  
+
+     d  fudenberg  and d  k  levine  “learning in games”  mit press 
+
+     
+
+     m  j  smith  “the stability of a dynamic model of trafﬁc assignment
+an application of a method of lyapunov”  transactions of science  vol 
+    pp                
+
+     m  j  smith  “evolution and the theory of games”  cambridge univer 
+
+sity press       
+
+     s  boyd  and l  vandenberghe  “convex optimization”  cambridge
+
+university press       
+
+appendix
+
+a  derivation of evolutionary dynamics
+
+here  we derive the new differential equations that describe
+the evolution of the market of the users under the new
+introduced revision protocol  recall that  the latter is described
+by the following equations:
+
+ρij t  = xj t  uj t  − ui t     ∀i  j ∈ i
+
+ρi  t  = γ u  − ui t     ∀i ∈ i
+
+ρ i t  = xi t  ui t  − u     ∀i ∈ i
+
+    
+
+    
+
+    
+
+where ρij t  is the rate at which users associated with operator
+i switch to operator j in time slot t  ρi  t  is the switch rate
+from operator i to neutral operator p  and ρ i t  the rate at
+which users return from p  to an operator i ∈ i in the market 
+the constant value γ ∈ r  represents the frequency of the
+direct selection 
+
+for imitation based revision protocols  the dynamics of the
+system can be described with the well known replicator dy 
+namics      the hybrid revision protocol deﬁned in equations
+           and      is in part imitation based  ρij t  and ρ i t  
+and in part a probabilistic direct selection of the neutral oper 
+ator  ρi  t    therefore  the respective evolutionary dynamics
+of the system cannot be described by the replicator dynamic
+
+equations which correspond to the pure imitation mechanism 
+we have to stress that the hybrid protocol that we introduce 
+differs from the hybrid protocol in     in that users select
+directly only the neutral operator and not the other i operators 
+the portion of users xi who are associated with operator
+i changes from time t to the time t   δt  according to the
+following equation:
+
+lemma a    the stationary points of the evolutionary dy 
+namics deﬁned in equations            and      are identical
+to the stationary points of the ordinary replicator dynamics
+    given by:
+
+˙xi t  =   ⇒ xi t  ui t  − uavg t   =    ∀ i ∈ i
+
+and
+
+xj t  uj t  − ui t   
+
+˙x  t  =   ⇒ x  t  u  − uavg t   =  
+
+    
+
+    
+
+xi t   δt  = xi t  − xi t δtxj = 
+
+− xi t δtγ u  t  − ui t   
+
+ 
+
+δtxj t xi t  ui t  − uj t   
+
+    
+
+i
+
+xj= 
+
+for δt →   we obtain the derivative:
+
+dxi t 
+
+dt
+
+= xi t  xj = 
+
+xj t ui t  −xj = 
+
+− γ u  − ui     x  t  ui − u    
+
+xj t uj  t 
+
+proof: first we prove that 
+
+in any stationary point 
+j   j ∈ i − should be equal to zero  we prove this claim by
+x∗
+j >    since uavg ≥ u  > uj 
+contradiction  assume that x∗
+this implies that there should be at least one operator i with
+ui > uavg and x∗
+i >    therefore  ui − uavg  cannot be
+equal to zero ∀i ∈ i    and ˙xi will be nonzero for at least one
+operator  therefore      cannot be satisﬁed  if x∗
+
+j  =   
+
+when xj =    the evolutionary dynamics given by eq       
+
+     and      reduce to ordinary replicator dynamics:
+
+or  if we omit the time index and rewrite the equation:
+
+dxi t 
+
+dt
+
+= xi ui − uavg − x  ui − u   − γ u  − ui  
+
+  x  ui − u    
+
+which can be analyzed in:
+
+dxi t 
+
+dt
+
+= xi ui − uavg   ∀i ∈ i  
+
+    
+
+dxj  t 
+
+dt
+
+= xj  uj − uavg −  γ − x   u  − uj    ∀j ∈ i −     
+
+where i   is the set of operators offering utility ui t  ≥ u  
+and i − is the set of operators offering utility uj t  < u  
+
+the dynamics of the population x  can be derived in a
+
+similar way:
+
+˙xi t  = xi t  ui t  − uavg t   ∀i ∈ i
+
+˙x  t  = x  t  u  − uavg t  
+
+    
+
+stationary points are identical to the stationary points of the
+typical replicator dynamics      
+
+i =    or  ii  x∗
+
+due to this lemma 
+
+the stationary points for the users
+population associated with each operator i ∈ i should satisfy
+one of the following conditions:  i  x∗
+i >  
+i = uavg  similarly  for the neutral operator p   eq 
+and u ∗
+      it must hold:  i  x∗
+  >  
+and u  = uavg or  iii  x∗
+  =   and u  = uavg  the case
+i =   implies zero revenue for the ith operator and hence
+x∗
+case  i  does not constitute a valid choice  therefore  there
+exist in total   possible combinations  cases  that will satisfy
+the stationarity properties given by eq       and     :
+
+  =   and u  < uavg   ii  x∗
+
+x  t   δt  = x  t  − x  t δtxi = 
+
+xi t δtγ u  − ui  
+
+xi t  ui − u   
+
+    
+
+  xi = 
+
+which can be written as:
+
+dx  t 
+
+dt
+
+=  x  xi∈i  
+
+xi u  − ui    γ xj∈i−
+
+xj u  − uj       
+
+equations            and      describe the evolutionary
+
+dynamics of game gu  
+
+b  analysis of stationary points
+
+despite the different dynamics  the system reaches the same
+stationary points as if users where employing the typical
+imitation revision protocol  in detail  the market state vector
+at a ﬁxed point  x∗ =  x∗
+ : ∀ i ∈ i    ∀ j ∈ i −   can
+be found by the following set of equations:
+
+i   x∗
+
+j   x∗
+
+• case a: x∗
+• case b: x∗
+
+u ∗
+
+i   u ∗
+
+• case c: x∗
+
+∀ i  j ∈ i 
+
+i   x∗
+i   x∗
+
+  >   and u ∗
+j >    x∗
+j > u   ∀ i  j ∈ i 
+j >    x∗
+
+i   x∗
+
+i = u   i ∈ i 
+  =   and u ∗
+
+i = u ∗
+
+j   with
+
+  =   and u ∗
+
+i = u ∗
+
+j = u  
+
+we ﬁnd now the exact value of the market state vector at
+the equilibrium  stationary point  x∗ for each case  first  we
+deﬁne for every operator i ∈ i the scalar parameter αi =
+wi  n eu   and the respective vector α =  αi : i ∈ i  
+
+we can ﬁnd the stationary points for case a by using the
+i   λi  = u  and imposing the constraint
+
+equation ui wi  x∗
+  >  :
+x∗
+
+ui wi  x∗
+
+i   λi  = log
+
+wi
+n x∗
+i
+
+− λi = u 
+
+    
+
+⇒ x∗
+
+i =
+
+wi
+
+n eλi u 
+
+= αie−λi
+
+and
+
+αie−λi >   ⇒
+
+i
+
+xi= 
+
+i
+
+xi= 
+
+αie−λi <  
+
+    
+
+dxi t 
+
+dt
+
+=
+
+dxj  t 
+
+dt
+
+=
+
+dx  t 
+
+dt
+
+=   ∀i ∈ i    j ∈ i −
+
+    
+
+x∗
+  >   ⇒   −
+
+apparently  the state vector x∗ depends on the operators’ price
+vector λ  therefore  we deﬁne the set of all possible case a
+stationary points  xa  as follows:
+
+xa = x∗
+
+i = αie−λi   ∀i ∈ i  x∗
+
+  =  −
+
+αie−λi : λ ∈ Λa 
+
+where Λa is the set of prices for which a stationary point in
+xa is reachable  i e  x∗
+
+  >  :
+
+i
+
+xi= 
+
+Λa =  λ   λ           λi   :
+
+αie−λi <   
+
+i
+
+xi= 
+
+similarly  for case b  we calculate the stationary points by
+j   λj  
+
+i   λi  = uj wj  x∗
+
+using the set of equations ui wi  x∗
+∀ i  j ∈ i  which yields:
+
+log
+
+w 
+n x∗
+ 
+
+− λ  = log
+
+w 
+n x∗
+ 
+
+or  equivalently:
+
+− λ  =       = log
+
+wi
+n x∗
+i
+
+− λi     
+
+x∗
+j = x∗
+i
+
+eλiαj
+eλj αi
+
+∀i  j ∈ i
+
+moreover since x∗
+
+  =   for case b  the following holds:
+
+x∗
+i =  
+
+xi∈i
+
+αi
+
+using      and      
+
+x∗
+i =
+
+additionally  ui > u  implies that:
+
+eλipj∈i αje−λj
+
+    
+
+    
+
+    
+
+wi
+n x∗
+i
+using      and      
+
+log
+
+− λi > u  ⇒ x∗
+
+i < αie−λi
+
+    
+
+i
+
+i
+
+i
+
+therefore  we deﬁne the set of all possible case c stationary
+points  xc  as follows:
+
+xc = x∗
+
+i = αie−λi   ∀ i ∈ i  x∗
+
+  =   : λ ∈ Λc 
+
+with
+
+Λc =  λ   λ           λi   :
+
+αie−λi =   
+
+i
+
+xi= 
+
+first  we show that the revenue of each operator i ∈ i
+is a continuous and a quasi concave function  secondly  we
+analyze best response pricing in game gp  then  we derive
+the nash equilibriums  nes  of the game using iterated strict
+dominance  finally  we prove convergence to these equilibri 
+ums by showing that gp is a potential game 
+
+c  properties of the revenue function
+
+the revenue function of each operator i is given by the
+
+following equation:
+
+if λi < l  
+
+if λi ≥ l  
+
+    
+
+αiλin
+j=  αje−λj
+
+ri λi  λ−i  =
+
+where l  = log αi    −pj =i αje−λj    
+
+eλipi
+
+αiλin e−λi
+
+each component  for each case  is a positive function which
+is also log concave  this means that it is a quasiconcave
+function and hence uniqueness of optimal solution is ensured
+for a proper constraint set  namely  it is:
+
+fa λi  = log αiλin e−λi = log αiλin − λi
+
+    
+
+x∗
+i <
+
+αie−λi ⇒
+
+αie−λi >  
+
+    
+
+and
+
+xi= 
+
+xi= 
+
+xi= 
+
+therefore  according to      and       we deﬁne the set of all
+possible case b stationary points  xb  as follows:
+
+xb = x∗
+
+i =
+
+αi
+j=  αje−λj
+
+  ∀i ∈ i  x∗
+
+  =   : λ ∈ Λb 
+
+where Λb is the set of prices for which a stationary point in
+xb is feasible  u ∗
+
+i > u :
+
+eλipi
+
+Λb =  λ   λ           λi   :
+
+αie−λi >   
+
+i
+
+xi= 
+
+finally  the stationary points for the case c solution must
+
+satisfy the following:
+
+ui = u  
+
+x∗
+  =  
+
+    
+
+which yields:
+
+i = αie−λi 
+x∗
+
+i
+
+xi= 
+
+αie−λi =  
+
+    
+
+fa λi     =
+
+ 
+λi
+
+−   ⇒ fa λi     =
+
+− 
+λ 
+i
+
+<  
+
+    
+
+hence  fa ·  which is the log function of ra
+i  ·   is concave
+which means that the later is log concave and since it is
+i  λi  >    it is also quasi concave  similarly  for the other
+ra
+component of the revenue function:
+
+fb λi  λ−i  = log
+
+αiλin
+
+αi   βeλi
+
+= log αiλin − log αi   βeλi
+    
+
+where β =pj =i αje−λi  the second derivative is:
+ αi   βeλi   <  
+
+fb λi  λ−i     =
+
+αiβeλi
+
+−
+
+− 
+λ 
+i
+
+    
+
+hence  rb
+that the function is continuous:
+
+i  ·  is also quasiconcave  finally  it is easy to see
+
+ra
+
+i  l   λ−i  = rb
+
+i  l   λ−i  = n    − β  log
+
+αi
+
+  − β
+
+    
+
+d  best response pricing in gp
+
+each operator i ﬁnds his best response price λ∗
+
+i for each
+price proﬁle of the other i −   operators by solving the
+following optimization problems  for the case the price vector
+belongs to the set Λa  λ ∈ Λa   pa
+i  :
+
+s t 
+
+αiλin e−λi
+
+max
+λi≥ 
+
+αje−λj <  
+
+i
+
+xj= 
+
+    
+
+    
+
+in order to ensure the uniqueness of the problem solution  we
+transform the constraint set to a closed and compact set as
+follows:
+
+finally  for the special case that λ ∈ Λc  the price of each
+operator i is directly determined by the prices that the other
+operators have selected  namely:
+
+    
+
+λc
+i = log
+
+αi
+
+  −pj =i αje−λj
+
+whether each operator i will agree and adopt this price or not 
+depends on the respective accrued revenue  rc
+
+i  λc
+
+i   λ−i  
+
+in the sequel  we examine and analyze jointly the solutions
+of the above optimization problems and derive the exact best
+response of the ith operator for each vector λ−i of the i −  
+prices 
+
+lemma a    for each operator i ∈ i  if     λ−i   ∈ Λa  then
+there is no best response price λ∗
+i   λ−i  ∈ Λa 
+that is  operator i will not select Λa 
+
+i   such that  λ∗
+
+  ǫ
+
+    
+
+proof: given that the price vector λ ∈ Λa  best response
+
+price is:
+
+λa
+
+i =  
+
+l    ǫ
+
+if     λ−i  ∈ Λa 
+if     λ−i   ∈ Λa 
+
+    
+
+where l  = λc
+i
+
+if     λ−i   ∈ Λa 
+
+is the price operator i selects when λ ∈ Λc 
+then l    ǫ >    otherwise price
+vector  l    ǫ  λ−i  will not belong to Λa  therefore  ra
+i  · 
+is a decreasing function at the point λi = λ    ǫ due to
+quasi concavity property  therefore  if     λ−i   ∈ Λa  then
+i always
+rc
+i  
+gives better response than λa
+
+i  l    ǫ  which means that λc
+
+i  l   = ra
+
+i  l   > ra
+
+lemma a    let us denote with µ∗
+i
+the unconstraint problem p b
+ µ∗
+that  λ∗
+
+i   λ−i  ∈ Λb 
+
+the optimal solution of
+i   for each operator i ∈ i  if
+i   such
+
+i   λ−i   ∈ Λb  then there is no best response price λ∗
+
+proof: given that the price vector λ ∈ Λb  best response
+
+price is:
+
+λb
+
+i = µ∗
+
+i
+
+l  − ǫ
+
+if  µ∗
+if  µ∗
+
+i   λ−i  ∈ Λb 
+i   λ−i   ∈ Λb 
+
+    
+
+i = l   if  µ∗
+
+and recall that λc
+i   λ−i   ∈ Λb  then l  − ǫ <
+i   otherwise  the price vector  l  − ǫ  λ−i  cannot be in
+µ∗
+Λb  therefore  rb
+i  ·  is an increasing function at the point
+λi = λ  − ǫ due to quasi concavity property  therefore  if
+i  l  − ǫ  which
+ µ∗
+means that λc
+
+i always gives better response than λb
+i  
+
+i   λ−i   ∈ Λb  then rc
+
+i  l   = rb
+
+i  l   > rb
+
+in other words  the previous two lemmas state that the only
+eligible best response for each operator i ∈ i in the price sets
+Λa and Λb are prices λ∗
+i respectively 
+theorem a    the best response price of an operator i is:
+
+i =   and and λ∗
+
+i = µ∗
+
+if     λ−i  ∈ Λa 
+if  µ∗
+
+  
+µ∗
+i  
+λc
+i = l   otherwise 
+
+i   λ−i  ∈ Λb 
+
+    
+
+λ∗
+
+i =
+
+
+proof: first we prove that     λ−i  ∈ Λa and  µ∗
+
+Λb cannot be true at the same time  since µ∗
+
+i   λ−i  ∈
+i is the optimal
+
+λi ≥ log
+
+αi
+
+  −pj =i αje−λj
+
+where ǫ >   is an arbitrary small positive constant number  as
+we will show immediately this transformation of the constraint
+set does not affect the solution of the game  the problem now
+is quasi concave with a closed and compact constraint set and
+hence it has a unique optimal solution       which we denote
+i and it is:
+λa
+
+λa
+i =    or λa
+
+i = log
+
+  ǫ
+
+    
+
+αi
+
+  −pj =i αj e−λj
+
+i =   is the optimal solution of the respective
+the value λa
+unconstrained problem  which yields optimal revenue ra
+i =
+αn e  and it is feasible if λ =     λ−i  ∈ Λa  otherwise 
+since ra
+i  ·  is a decreasing function of λi  operator i can
+i   λ−i  ∈ Λa 
+only select the minimum price λa
+similarly  when the price vector belongs to the set Λb  i e 
+λ ∈ Λb  the revenue maximization problem for each operator
+i ∈ i  pb
+
+i such that  λa
+
+i   is:
+
+s t 
+
+max
+λi≥ 
+
+λiαin
+
+eλipj∈i αje−λj
+xj∈i
+
+αje−λj >  
+
+    
+
+    
+
+similarly to the previous analysis  we transform the constraint
+set
+to a closed and compact set by using the following
+inequality:
+
+λi ≤ log
+
+− ǫ
+
+    
+
+αi
+
+  −pj =i αje−λj
+
+this is also a concave problem which has unique solution and
+can be either the optimal solution of the respective uncon 
+i   λ−i  ∈ Λb  or the maximum price
+strained problem  λ∗
+for which the price vector belongs to Λb  rb
+i  ·  increases with
+λi:
+
+i if  λ∗
+
+λb
+i = µ∗
+
+i   or λb
+
+i = log
+
+αi
+
+  −pj =i αje−λj
+
+− ǫ
+
+    
+
+solution of unconstraint rb
+i :
+
+drb
+
+i  λi 
+dλi
+
+=   ⇒ eµ∗
+
+i  µ∗
+
+i −    =
+
+αi
+
+pj =i αje−λj
+
+    
+
+i  λc
+
+i   λ−i   ∈ Λb which concludes the proof 
+
+it is obvious that equation      can only hold when µ∗
+i >   
+note that if  µ∗
+i   λ−i  ∈ Λb  the vector λ =  l  λ−i  ∈ Λb
+for any price l < µ∗
+i   hence  it should also hold that λ =
+    λ−i  ∈ Λb  with a similar reasoning  when     λ−i  ∈
+Λa   l  λ−i  ∈ Λa holds for any price l >   and therefore
+i cannot be a best
+ µ∗
+response  because ra
+i    similarly  if
+i  λc
+ µ∗
+
+i   λ−i  ∈ Λa  also  if     λ−i  ∈ Λa  λc
+i     > ra
+i   = rc
+is not a best response 
+
+i   λ−i  ∈ Λb  λc
+i
+finally  from lemma a   and lemma a    we can say
+i dominates all other prices if     λ−i   ∈ Λa and
+
+that λc
+ µ∗
+e  existence and convergence analysis of nash equilibriums
+in the previous section  we derived the best response strat 
+egy for each player of the game gp  the next important steps
+are  i  to explore the existence of nash equilibriums  ne  for
+gp  and  ii  to study if the convergence to them is guaranteed 
+in       it is proven that if the game can be modeled as
+a potential game  not only the existence of pure nes are
+ensured  but also convergence to them is guaranteed under
+any ﬁnite improvement path  in other words  a potential game
+always converges to pure ne when the players adjust their
+strategies based on accumulated observations as game unfolds 
+in this section  we provide the necessary deﬁnitions for ordinal
+potential games  and we prove that game gp belongs in this
+class of games 
+deﬁnition a    a game  i  λ   ri   is an ordinal potential
+game  if there is a potential function p :     λmax  → r such
+that the following condition holds:
+
+sgn ri λi  λ−i  − ri λ′
+
+sgn p λi  λ−i  − p λ′
+
+i  λ−i   =
+i  λ−i  ∀i ∈ i  λi  λ′
+
+i ∈     λmax 
+
+    
+
+where sgn ·  is the sign function 
+lemma a    the game gp is an ordinal potential game 
+
+proof: we deﬁne the potential function as:
+
+p λ  = pi
+j=   log λj − λj   ifpi
+pi
+j=   log λj − λj  − log  pi
+
+therefore 
+
+j=  αje−λj ≤   
+
+j=  αje−λj    else 
+
+    
+
+p  λi  λ−i  − p λ
+
+′
+
+i  λ−i  =
+
+=
+
+  if λi  λ
+
+′
+
+i ≥ l 
+
+′
+
+′
+
+log λieλ
+i
+ieλi
+λ
+λieλ
+λ′
+
+log
+
+′
+
+′
+
+′
+
+λieλ
+
+i αie−λ
+
+i  pj =i αje−λj  
+ieλi αie−λi  pj =i αje−λj  
+ieλi αie−λi  pj =i αje−λj  
+i  pj =i αje−λj  
+
+i αie−λ
+
+eλi λ′
+i
+
+i
+
+′
+
+′
+
+λ′
+λieλ
+
+log
+
+log
+
+
+
+
+  if λi  λ
+
+′
+
+i < l 
+
+λi < l   if λ
+
+′
+
+i ≥ l 
+
+if λi ≥ l   λ
+
+′
+
+i < l 
+
+λi
+
+log
+
+     
+
+log λi
+
+eλi  αi
+
+eλi   log αin
+
+if λi ≥ l  
+  log αin if λi < l  
+
+where l  = log αi    −pj =i αj e−λj      moreover  using
+log ri =
+
+
+is straightforward to show that p λi  λ−i  −
+i  λ−i  for any
+i ∈     λmax   since
+i  λ−i  has always same sign as
+i  λ−i   condition given in      is satisﬁed 
+
+p λ′
+operator i ∈ i and for any λi  λ′
+log ri λi  λ−i  − log ri λ′
+ri λi  λ−i  − ri λ′
+and game gp is an ordinal potential game 
+
+i  λ−i  = log ri λi  λ−i  − log ri λ′
+
+eλi  pj =i
+
+αj
+eλj  
+
+now 
+
+it
+
+f  detailed analysis of nash equilibriums
+
+in the previous section  we proved the existence of pure
+ne and convergence to them  in this section  we extend our
+analysis further in order to ﬁnd these nes  for the sake of
+simplicity  we consider the case where all the operators have
+same amount of available spectrum wi = w and hence αi =
+α  ∀i ∈ i 
+
+before starting our analysis  we rewrite constraint of set Λa
+
+given in eq       as follows:
+
+α ≤
+
+ 
+
+pj∈i e−λj
+
+=
+
+h  eλj |j ∈ i  
+
+i
+
+    
+
+where h ·  is the harmonic mean function of the variables
+ eλ    eλ           eλi   =   eλj |j ∈ i  :
+
+h  eλj |j ∈ i   =
+
+i
+
+e−λ    e−λ            e−λi
+
+therefore  if λ ∈ Λa  it is:
+
+h  eλj |j ∈ i   ≥ αi
+
+similarly  according to       if λ ∈ Λb then:
+
+h  eλj |j ∈ i   ≤ αi
+
+and ﬁnally  if λ ∈ Λc:
+
+h  eλj |j ∈ i   = αi
+
+    
+
+    
+
+    
+
+    
+
+next  we deﬁne a new variable  h as the natural logarithm of
+the harmonic mean:
+
+h = log h  eλj |j ∈ i  
+
+    
+
+note that  since eh is the harmonic mean of  eλj |j ∈ i   we
+can say that one of the following should hold:
+
+   every operator i ∈ i adopts the same price λi = h 
+   if one operator j ∈ i selects a price λj < h  then there
+must be at least one other operator k ∈ i who will adopt
+a price λk > h 
+
+additionally  we deﬁne the variable h−i which is similar to h
+except that price of the ith operator is excluded  that is:
+
+h−i = log h  eλj |j ∈ i \ i   
+
+    
+
+it is obvious that if λi > h  then h−i < h  if λi < h  then
+h−i > h  and if λi = h  then h−i = h 
+
+lemma a    if α ∈ a  =     e i   there is a unique ne
+λ∗ ∈ Λa  with λ∗ =  λ∗
+
+i =   : i ∈ i 
+
+proof: first  we prove that the ne cannot be in Λb or
+Λc  λ∗  ∈ Λb ∪ Λc  if α ∈ a  =     e i   notice that  when
+the price vector is not in Λa  h ≤ log αi  <   for given α
+values  therefore there exists at least one operator with price
+less than one  since rb
+is an increasing function between
+i
+λi ∈         operators with λi <   would gain more revenue
+by unilaterally increasing their prices  therefore λ∗ can only
+be in Λa  according to theorem a    given that the price
+vector is in Λa  optimal price for any operator i can only be
+i =   if     λ−i  ∈ Λa  since λ∗ =  λ∗
+λa
+i =   : i ∈ i  ∈ Λa
+when α ∈ a   it is a feasible and unique solution 
+lemma a    µ∗
+i−  and h−i
+
+i is always between i
+
+proof: we can rewrite equation      as follows:
+
+eµ∗
+
+i  µ∗
+
+i −    =
+
+eh−i
+i −  
+
+    
+
+i−    then λ∗
+
+i −   should be less than  
+
+where h−i is deﬁned in equation       now  if h−i < i
+or equivalently if h−i −   <  
+than h−i in order to satisfy       moreover  if λ∗
+then λ∗
+therefore  h−i < λ∗
+i
+i−  ≤ λ∗
+lemma a    if α ∈ a  =  ei  i−    ∞   there is a unique
+ne λ∗ ∈ Λb  with λ∗ =  λ∗
+
+i−  
+i should be greater
+i > h−i 
+i−  in order to satisfy      
+i−    then
+
+i ≤ h−i  which proves the lemma 
+
+i−    similarly  if h−i ≥ i
+
+i = i  i −    : i ∈ i 
+
+i < i
+
+proof: first we prove that there is no ne in Λa if α ≥
+e i  i e  if α ∈ a  ∪ a    according to theorem a    optimal
+price for any operator i can only be λa
+i =   if     λ−i  ∈ Λa 
+i   since λ∗ =  λ∗
+otherwise λc
+i =   : i ∈ i   ∈
+Λa when α ∈ a  ∪ a   there is no ne in Λa 
+
+i dominates λa
+
+i > i  i −    and λc
+
+secondly  we prove that there is no ne in Λc if α ∈ a  =
+ ei  i−    ∞   recall that  when the price vector is in Λc 
+h = log αi  > i  i −     which means that there exists
+at least one operator with price λc
+i ≥
+h  remember that if λi ≥ h  then h−i ≤ h  so λi ≥ h−i 
+is greater than both h−i and
+therefore  for an operator i  λc
+i
+i  i −     according to theorem a   and lemma a    when
+i which
+ µ∗
+is between h−i and i  i −     this means that for at least one
+operator  λc
+i   λ−i  ∈
+i
+Λb  this operator can increase his revenue by reducing his
+price to µ∗
+i   therefore  there is no ne in λc for the given α
+values  and we proved that the ne can only be in Λb 
+
+i   λ−i  ∈ Λb  best response price of operator i is µ∗
+
+i   which implies that  µ∗
+
+is greater than µ∗
+
+finally  we prove that the only ne is λ∗ =  λ∗
+
+i = i  i−   :
+i ∈ i   if α ∈ a   according to lemma a    µ∗
+i is between
+h−i and i  i −    for all operators  h can be greater than or
+less than i  i −    if h ≥ i  i −    unless all of the operators
+set their prices to i  i −     there exists at least one operator i
+with price λi greater than both h−i and i  i −    hence  λi is
+i and this operator can increase his revenue
+also greater than µ∗
+by reducing his price to µ∗
+i   similarly  if h < i  i −     there
+exists at least one operator with price λi less than both h−i and
+
+i  i −    this operator can increase his revenue by increasing
+his price  if all the operators set their prices to λi = i  i −    
+the price vector is in Λb and none of the operators can increase
+his revenue by unilaterally changing his price  therefore  the
+only ne is λ∗ =  λ∗
+
+i = i  i −    : i ∈ i  
+
+hence the lemma is proved 
+
+lemma a     if α ∈ a  =  e i  ei  i−     a ne can only be
+in Λc 
+
+proof: in the proof of the lemma a    we showed that
+there is no ne in Λa  if α ∈ a   we can also prove that
+there is no ne in Λb for the given range of α values  if the
+price vector is in Λb and α < ei  i−  
+  then h < i  i −    
+therefore  there is at least one operator with price λi ≤ h−i
+and λi < i  i−    who can increase his revenue by increasing
+his price  so we conclude that  if α ∈ a  =  e i  ei  i−    
+there is no ne in Λa or Λb 
+lemma a     if α ∈ a  =  e i  ei  i−     λ∗ ∈ Λc with
+λ∗ =  λ∗
+
+i = log iα  : i ∈ i  is a ne 
+
+i
+
+proof: when all the operators set the same price λ∗
+
+i =
+log iα  and α ∈ a  =  e i  ei  i−     log iα  is between
+  and µ∗
+for all operators  this can be veriﬁed through
+i
+equation        therefore  for any operator i      λ−i   ∈ Λa
+i   λ−i   ∈ Λb  then  according to theorem a    best
+and  µ∗
+response price is λc
+i which is equal to log iα   hence  no
+operator can gain more revenue by unilaterally changing his
+price  and λ∗ =  λ∗
+
+i = log iα  : i ∈ i  is a ne 
+
+finally we analyze the ne for boundary values of a   i e 
+for α = e i and α = ei  i−   i  in the previous lemma  it is
+i = log iα  : i ∈ i  is a ne if α ∈ a  
+proven that λ∗ =  λ∗
+we can also prove that it is the only ne for these boundary
+values  in lemma a     it is proven that any ne is in Λc for
+these α values  so  when α = e i  h = log iα  =    which
+means that unless all of the users set their prices to one  there
+exists some operators with λi <    these operators would gain
+more revenue by setting their prices to one  hence  the only
+ne is λ∗
+i = log iα  =    similarly  when α = ei  i−   i 
+h = log iα  = i  i −     this means that unless all of the
+users set their prices to i  i −     there exists some operators
+with λi greater than both h−i and m  m −    these operators
+would gain more revenue by reducing their prices  hence  the
+only ne is λ∗
+
+i = log iα  = i  i −    
+
+we also show that when α ∈  e i  ei  i−     there can be
+inﬁnitely many nes  all in Λc  via numerical simulations  for
+different initial price settings  the game converges to different
+ne 
+
+theorem a     the game gp attains a pure ne which
+depends on the value of parameter α as follows:
+
+• if α ∈ a  =     e i   there is a unique ne λ∗ ∈ Λa 
+i ∈ i  and respective market
+
+with λ∗ =  λ∗
+equilibrium x∗ ∈ xa 
+
+i =   :
+
+• if α ∈ a  =  e
+
+i
+
+Λb  with λ∗ =  λ∗
+
+i−   i  ∞   there is a unique ne λ∗ ∈
+i−  : i ∈ i   which induces a
+
+i = i
+
+respective market equilibrium x∗ ∈ xb 
+
+i
+
+i
+
+• if α ∈ a  =  e i  e
+
+i−   i   there exist inﬁnitely many
+nes  λ∗ ∈ Λc  and each one of them yields a respective
+market stationary point x∗ ∈ xc 
+proof: lemma a   proves that the game gp is a ﬁnite
+ordinal potential game  therefore  it always attains a pure ne 
+lemma a   proves the case for α ∈ a  =     e i   lemma
+i−   i  ∞   the case
+a   proves the case for α ∈ a  =  e
+for α ∈ a  =  e i  e
+i−   i  is proven in lemma a    and
+lemma a    
+
+i
+
+
