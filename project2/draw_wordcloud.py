@@ -10,3 +10,4 @@ def draw_tf(tf_top_50):
     plt.imshow(cloud)
     plt.axis('off')
     plt.savefig('./output/tf_wordcloud.pdf', format='pdf')
+
