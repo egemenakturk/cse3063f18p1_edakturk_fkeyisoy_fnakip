@@ -16,7 +16,6 @@ def get_rid_of_stopword(txt_dir):
         file_extension = txt.split(".")[-1]
         if file_extension == "txt":
             txt_filename = txt_dir + txt
-            print(txt)
             file = open(txt_filename)
             txt_file = file.read()
             text=txt_file.split()
@@ -26,7 +25,7 @@ def get_rid_of_stopword(txt_dir):
                         append_file = open("./filtered_txt/"+txt, 'a')
                         append_file.write("  "+word)
                         append_file.close()
-
+doc_count_diveded_word_counters=15
 
 def count_words(word_freq, d):
     txt_dir = "./filtered_txt/"
@@ -41,10 +40,10 @@ def count_words(word_freq, d):
             for word in word_list:
                 if len(word) > 2:
                     d[word] = d.get(word, 0)+1
-            tf_d_to_list_top_50(word_freq, d)
+    tf_d_to_list_top_50(word_freq, d)
 
 
-def tf_idf_cal(d,txt_dir):
+def tf_idf_cal(d,txt_dir, tf_idf_freq):
     if txt_dir == "": txt_dir = os.getcwd() + "\\"  # if no txt_dir passed in
     doc_count= len(os.listdir(txt_dir))
 
@@ -64,10 +63,14 @@ def tf_idf_cal(d,txt_dir):
                 for doc in word_list:
                     if word in doc:
                         word_counter += 1
+        if word_counter > 0 and doc_count != 0:
+            doc_count_diveded_word_counter = doc_count / word_counter
+            print(doc_count_diveded_word_counter)
 
-                if word_counter != 0:
-                    tfidf = d[word] * math.log(doc_count / word_counter)
-                    tfidf_dict[word] = tfidf
+            tfidf = d[word] * math.log(doc_count_diveded_word_counter)
+            tfidf_dict[word] = tfidf
+    tfidf_d_to_list_top_50(tf_idf_freq, tfidf_dict)
+
 
 
 def tf_d_to_list_top_50(word_freq, d):
@@ -83,10 +86,29 @@ def tf_d_to_list_top_50(word_freq, d):
     write_to_csv_tf_list(data)
     tf_csv_reader()
 
+def tfidf_d_to_list_top_50(word_freq, d):
+    for key, value in d.items():
+        word_freq.append((value,key))
+    word_freq.sort(reverse=True)
+    counter = 0
+    data = []
+    while counter < 50:
+        data.append([word_freq[counter][1], word_freq[counter][0]])
+        counter = counter + 1
+    write_to_csv_tfidf_list(data)
+    tfidf_csv_reader()
+
+def write_to_csv_tfidf_list(data):
+    csv.register_dialect(';dialect', delimiter=';', quoting=csv.QUOTE_NONE, skipinitialspace=True)
+    with open('./output/tfidf_list.csv', 'wb') as f:
+        writer = csv.writer(f, dialect=';dialect')
+        for row in data:
+            writer.writerow(row)
+        f.close()
 
 def write_to_csv_tf_list(data):
     csv.register_dialect(';dialect', delimiter=';', quoting=csv.QUOTE_NONE, skipinitialspace=True)
-    with open('./output/tf_idf.csv', 'wb') as f:
+    with open('./output/tf_list.csv', 'wb') as f:
         writer = csv.writer(f, dialect=';dialect')
         for row in data:
             writer.writerow(row)
@@ -95,10 +117,19 @@ def write_to_csv_tf_list(data):
 
 def tf_csv_reader():
     tf_top_50 = {}
-    with open('./output/tf_idf.csv', 'r') as wordcloud_file:
+    with open('./output/tf_list.csv', 'r') as wordcloud_file:
         reader = csv.reader(wordcloud_file, delimiter=';')
         for row in reader:
             tf_top_50[row[0]] = float(row[1])
         wordcloud_file.close()
     draw_wordcloud.draw_tf(tf_top_50)
+
+def tfidf_csv_reader():
+    tf_top_50 = {}
+    with open('./output/tfidf_list.csv', 'r') as wordcloud_file:
+        reader = csv.reader(wordcloud_file, delimiter=';')
+        for row in reader:
+            tf_top_50[row[0]] = float(row[1])
+        wordcloud_file.close()
+    draw_wordcloud.draw_tfidf(tf_top_50)
 
