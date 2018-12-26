@@ -19,7 +19,7 @@ def get_rid_of_stopword(txt_dir):
             txt_filename = txt_dir + txt
             file = open(txt_filename)
             txt_file = file.read()
-            for char in '-.,"/1234567890(){}[]&%+^!#$':
+            for char in '-.,"`"/1234567890(){}[]&%+^!#$':
                 text = txt_file.replace(char, ' ')
             text=txt_file.split()
             for word in text:
@@ -65,7 +65,7 @@ def tf_idf_cal(d,txt_dir, tf_idf_freq):
                 for doc in word_list:
                     if word in doc:
                         word_counter += 1
-        if word_counter > 0 and doc_count != 0:
+        if word_counter > 0 and doc_count != 0 and len(word) > 2:
             doc_count_diveded_word_counter = doc_count / word_counter
             tfidf = d[word] * math.log(doc_count_diveded_word_counter)
             tfidf_dict[word] = tfidf

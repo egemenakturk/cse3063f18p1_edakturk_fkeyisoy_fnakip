@@ -1,3 +1,4 @@
+from __future__ import division
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from PIL import Image
